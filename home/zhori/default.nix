@@ -9,6 +9,7 @@
 	imports = [
 		./shell.nix
 		./waybar.nix
+    ./kitty.nix
 	];
 
 	programs.zsh.enable = true;
