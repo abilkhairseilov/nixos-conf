@@ -42,7 +42,7 @@
 			zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 			# Environment
-			export PATH="$PATH:$HOME/.local/bin:$HOME/conf/scripts"
+			export PATH="$PATH:$HOME/.local/bin"
 			export EDITOR="vim"
 
 			# fzf & zoxide

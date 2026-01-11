@@ -10,20 +10,15 @@
 		./shell.nix
 		./waybar.nix
     ./kitty.nix
+    ./sway.nix
+    ./gtk.nix
 	];
 
 	programs.zsh.enable = true;
 
-	gtk = {
-		enable = true;
-		theme = {
-			name = "Nordic-darker-v40";
-			package = pkgs.arc-theme;
-		};
-	};
-
 	home.packages = with pkgs; [
 		firefox
+    vesktop
 
 		neovim
 		vim
@@ -37,22 +32,28 @@
 		wl-clipboard
 		clipman
 		wlogout
+    waypaper
 		swaybg
+    swaynotificationcenter
+    nwg-drawer
+    nwg-panel
+    nwg-look
+    pcmanfm
+    blueman
 
 		kitty
 		fzf
 		zoxide
+    fastfetch
 
-		texliveFull
+
 
 		prismlauncher
+    apotris
 
 		gnomeExtensions.user-themes
 		gnomeExtensions.blur-my-shell
 		gnome-tweaks
-
-		arc-icon-theme
-		nordic
 
 	];
 

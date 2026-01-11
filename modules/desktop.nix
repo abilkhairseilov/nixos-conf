@@ -1,9 +1,20 @@
 { config, lib, pkgs, ... }:
 
 {
-  services.xserver.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+
+  services = {
+    xserver = {
+      enable = true;
+      xkb.options = "ctrl:nocaps";
+    };
+
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+
+    # logind.lidSwitch = {
+    #   enable = true;
+    # };
+  };
 
   environment.systemPackages = with pkgs; [
     gnomeExtensions.battery-health-charging
@@ -11,6 +22,8 @@
 
     easyeffects
     pavucontrol
+
+    dbus
   ];
 
   xdg.portal = {

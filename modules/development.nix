@@ -12,5 +12,8 @@
 		tree
 		jq
 		btop
+
+    typst
+    texliveFull
   ];
 }
