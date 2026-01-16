@@ -8,17 +8,63 @@ set $term kitty
 # runner
 set $menu wofi
 
+# locking
+set $lock swaylock -f -i ~/.cache/wallpaper/current-wallpaper --effect-blur 7x5 --clock
+
+# monitors
+set $laptop eDP-1
+set $monitor-up HDMI-A-1
+
+# dual monitor setups
+output eDP-1 {
+       pos 0 1080
+       scale 1
+}
+
+output HDMI-A-1 {
+       pos 0 0
+       scale 1
+}
+
+focus_follows_mouse yes
+mouse_warping none
+
+# external monitor
+workspace 1 output $monitor-up
+workspace 2 output $monitor-up
+workspace 3 output $monitor-up
+
+# laptop screen
+workspace 4 output $laptop
+workspace 5 output $laptop
+workspace 6 output $laptop
+workspace 7 output $laptop
+workspace 8 output $laptop
+workspace 9 output $laptop
+workspace 10 output $laptop
+
+# handle lid closing
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+
+# panic button
+# When external disconnects, move its workspaces to laptop
+bindsym --locked $mod+Shift+u \
+    move workspace to output $laptop
+
 font pango:JetBrainsMono Nerd Font 10
 
 exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec_always systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec_always blueman-applet
-exec_always clipman store
+#exec_always clipman store
+
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 
 # lid handling
 exec_always swayidle \
-    before-sleep 'swaylock -f -i ~/.cache/wallpaper/current-wallpaper --effect-blur 7x5 --clock' \
-    timeout 300 'swaylock -f -i ~/.cache/wallpaper/current-wallpaper --effect-blur 7x5 --clock' \
+    before-sleep '$lock' \
+    timeout 300 '$lock' \
     timeout 600 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"'
 
@@ -27,6 +73,7 @@ exec waypaper --restore
 exec swayosd-server
 exec swaync
 exec easyeffects -w
+exec flameshot
 
 gaps inner 10
 default_border pixel 2
@@ -34,6 +81,9 @@ default_border pixel 2
 client.unfocused #607380 #222222 #888888
 client.focused #afd2e9 #285577 #ffffff
 
+input type:keyboard {
+      xkb_options ctrl:nocaps
+}
 
 input type:touchpad {
       dwt enabled
@@ -56,7 +106,9 @@ input type:keyboard { xkb_options ctrl:nocaps }
     # file manager
     bindsym $mod+e exec pcmanfm
 
-    bindsym $mod+l exec swaylock -f -i ~/.cache/wallpaper/current-wallpaper --effect-blur 7x5 --clock
+    bindsym $mod+l exec $lock
+
+    bindsym $mod+v exec clipman pick -t wofi
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -188,16 +240,10 @@ bindsym $mod+r mode "resize"
     bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower --device intel_backlight
 
     # Special key to take a screenshot with grim
-    bindsym Print exec grim
+    bindsym Print exec
 
     bindsym $mod+n exec swaync-client -t -sw
 
 bar {
   swaybar_command waybar
 }
-
-# ### Imports
-# include ./sway/startup
-# include ./sway/input
-# include ./sway/keybindings
-# include ./sway/theme

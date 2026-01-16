@@ -6,6 +6,10 @@
 
 	home.stateVersion = "25.11";
 
+  services = {
+    mpris-proxy.enable = true;
+  };
+
 	imports = [
 		./shell.nix
 		./waybar.nix
@@ -26,9 +30,9 @@
 
 		waybar
 		wofi
-		mako
 		grim
-		slurp
+    flameshot
+    kanshi
 		wl-clipboard
 		clipman
 		wlogout

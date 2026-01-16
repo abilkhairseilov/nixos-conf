@@ -13,7 +13,12 @@
 		jq
 		btop
 
+    gcc
+    nodejs_24
+    svelte-language-server
+
     typst
+    tinymist
     texliveFull
   ];
 }

@@ -32,4 +32,8 @@
   };
 
   security.polkit.enable = true;
+
+  powerManagement.enable = true;
+  boot.kernelParams = ["resume_offset=16818176"];
+  boot.resumeDevice = "/dev/disk/by-uuid/9847502b-880d-40d9-af61-402f40f2c744";
 }
