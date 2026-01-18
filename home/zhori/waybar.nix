@@ -37,7 +37,7 @@
 			layer = "top";
 			position = "top";
 			height = 32;
-      output = [ "HDMI-A-1" "eDP-1" ];
+      # output = [ "HDMI-A-1" "eDP-1" ];
 
 			modules-left = [ "custom/logo" "sway/workspaces" "sway/mode" ];
 			modules-center = [ "sway/window" ];
