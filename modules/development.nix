@@ -2,7 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    javaPackages.compiler.temurin-bin.jre-17
     git
 		gh
 		curl
@@ -19,6 +18,10 @@
     nodejs_24
     svelte-language-server
     llvmPackages_20.clang-unwrapped
+    python315
+    rustc
+    javaPackages.compiler.temurin-bin.jre-17
+    eclipses.eclipse-java
 
     typst
     tinymist
