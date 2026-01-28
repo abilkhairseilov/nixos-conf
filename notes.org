@@ -1,0 +1,10 @@
+* Inbox
+** [2026-01-28 Wed 21:01] Cursor themes
+Use this to find your cursor package's name:
+#+begin_src sh
+ls $(nix-build '<nixpkgs>' -A [pkg-name] --no-out-link)/share/icons
+#+end_src
+
+where pkg-name is the name of your cursor package.
+
+[[file:~/nixos/home/zhori/gtk.nix::cursorTheme = {]]

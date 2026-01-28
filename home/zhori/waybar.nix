@@ -154,6 +154,7 @@
 		@define-color icon_color #afd2e9;
 	@define-color background #141318;
 	@define-color on_primary_container #afd2e9;
+    @define-color button_bg #5a566b;
 	@define-color error #bf616a;
 
 	/* -----------------------------------------------------
@@ -161,7 +162,7 @@
 	 * ----------------------------------------------------- */
 
 	* {
-		font-family: "JetBrainsMono Nerd Font Mono", "Font Awesome 7 Free";
+		font-family: "Aporetic Sans Mono", "Font Awesome 7 Free", "Symbols Nerd Font Mono";
 border: none;
 	border-radius: 0;
 	min-height: 0;
@@ -237,6 +238,7 @@ margin: 0 2px;
 #workspaces button.active {
 color: @on_primary_container;
        font-weight: 700;
+       background-color: @button_bg;
 }
 
 #workspaces button:hover {

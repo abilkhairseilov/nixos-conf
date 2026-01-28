@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+
     git
 		gh
 		curl
@@ -16,16 +17,20 @@
 
     gcc
     nodejs_24
+    pnpm_9
     svelte-language-server
     llvmPackages_20.clang-unwrapped
     python315
     rustc
     javaPackages.compiler.temurin-bin.jre-17
     eclipses.eclipse-java
+    vscode
+    zlib
 
     typst
     tinymist
     texliveFull
     pandoc
+
   ];
 }

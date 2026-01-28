@@ -21,6 +21,7 @@
 			ls = "ls --color -lah";
 			vi = "nvim";
 			cls = "clear";
+      ff = "fastfetch";
 		};
 
 		initContent = ''

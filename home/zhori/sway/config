@@ -9,18 +9,32 @@ set $term kitty
 set $menu wofi
 
 # locking
-set $lock swaylock -f -i ~/.cache/wallpaper/current-wallpaper --effect-blur 7x5 --clock
+set $lock swaylock -f -i ~/.cache/wallpaper/current-wallpaper --effect-blur 7x5 --clock --indicator\
+        --indicator-radius 100 \
+        --indicator-thickness 7 \
+        --ignore-empty-password \
+        --ring-color 2a2e38 \
+        --key-hl-color 51afef \
+        --text-color bbc2cf \
+        --line-color 2a2e38 \
+        --inside-color 242730 \
+        --separator-color 00000000 \
+        --fade-in 0.1 \
+        --effect-scale 0.5 --effect-blur 7x3 --effect-scale 2 \
+        --effect-vignette 0.5:0.5 \
 
 # monitors
 set $laptop eDP-1
 set $monitor-up HDMI-A-1
 
 # dual monitor setups
+# laptop
 output eDP-1 {
-       pos 0 1080
+       pos 1920 0
        scale 1
 }
 
+# monitor
 output HDMI-A-1 {
        pos 0 0
        scale 1
@@ -47,6 +61,10 @@ workspace 10 output $laptop
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
+# gestures
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next
+
 # panic button
 # When external disconnects, move its workspaces to laptop
 bindsym --locked $mod+Shift+u \
@@ -54,8 +72,9 @@ bindsym --locked $mod+Shift+u \
 
 font pango:JetBrainsMono Nerd Font 10
 
-exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
-exec_always systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+# exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+# exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
 exec_always blueman-applet
 #exec_always clipman store
 
@@ -78,14 +97,16 @@ exec flameshot
 gaps inner 10
 default_border pixel 2
 
-client.unfocused #607380 #222222 #888888
-client.focused #afd2e9 #285577 #ffffff
+# format:               border  background text     indicator child_border
+client.unfocused        #2e3440 #3b4252    #d8dee9  #2e9ef4
+client.focused          #afd2e9 #81a1c1    #eceff4  #2e9ef4
 
 input type:keyboard {
       xkb_options ctrl:nocaps
 }
 
 input type:touchpad {
+      pointer_accel 0.5
       dwt enabled
       tap enabled
       natural_scroll enabled
@@ -97,6 +118,9 @@ input type:keyboard { xkb_options ctrl:nocaps }
     # Start a terminal
     bindsym $mod+Return exec $term
 
+    # emacs
+    bindsym $mod+Shift+e exec emacsclient -c
+
     # Kill focused window
     bindsym $mod+q kill
 
@@ -106,9 +130,10 @@ input type:keyboard { xkb_options ctrl:nocaps }
     # file manager
     bindsym $mod+e exec pcmanfm
 
+    # lock
     bindsym $mod+l exec $lock
 
-    bindsym $mod+v exec clipman pick -t wofi
+    # bindsym $mod+v exec clipman pick -t wofi
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -219,6 +244,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
 bindsym $mod+r mode "resize"
 #
 # Utilities:
@@ -247,3 +273,5 @@ bindsym $mod+r mode "resize"
 bar {
   swaybar_command waybar
 }
+
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP

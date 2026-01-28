@@ -26,7 +26,7 @@
 
 		neovim
 		vim
-		emacs
+		emacs-pgtk
 
 		waybar
 		wofi
@@ -50,8 +50,6 @@
 		zoxide
     fastfetch
 
-
-
 		prismlauncher
     apotris
 
@@ -60,6 +58,4 @@
 		gnome-tweaks
 
 	];
-
-
 }

@@ -19,6 +19,7 @@
   environment.systemPackages = with pkgs; [
     gnomeExtensions.battery-health-charging
     kdePackages.kdeconnect-kde
+    wl-clipboard-x11
 
     easyeffects
     pavucontrol
@@ -26,10 +27,15 @@
     dbus
   ];
 
+  # security.pam.service = {
+  #   gdm.enableGnomeKeyring = true;
+  # };
+
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
-    config.common.default = ["gnome" "gtk"];
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = ["gnome" "gtk" "wlr"];
   };
 
   programs.sway.enable = true;
