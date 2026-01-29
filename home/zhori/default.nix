@@ -16,6 +16,8 @@
     ./kitty.nix
     ./sway.nix
     ./gtk.nix
+    ./noctalia.nix
+    ./scripts.nix
 	];
 
 	programs.zsh.enable = true;
@@ -31,6 +33,8 @@
 		waybar
 		wofi
 		grim
+    slurp
+    satty
     flameshot
     kanshi
 		wl-clipboard

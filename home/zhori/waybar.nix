@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{config, lib, pkgs, ...}:
 
 {
 	programs.waybar = {
@@ -6,30 +6,30 @@
   };
 
   systemd.user.services.waybar = {
-  Unit = {
-    Description = "Waybar";
-    After = [
-      "graphical-session.target"
-      "pipewire.service"
-      "wireplumber.service"
-      "network-manager.service"
-      "bluetooth.service"
-    ];
-    PartOf = [ "graphical-session.target" ];
-  };
+    Unit = {
+      Description = "Waybar";
+      After = [
+        "graphical-session.target"
+        "pipewire.service"
+        "wireplumber.service"
+        "network-manager.service"
+        "bluetooth.service"
+      ];
+      PartOf = [ "graphical-session.target" ];
+    };
 
-  Service = {
-    ExecStart = "${pkgs.waybar}/bin/waybar";
-    Restart = "on-failure";
-    Environment = [
-      "XDG_CURRENT_DESKTOP=sway"
-    ];
-  };
+    Service = {
+      ExecStart = "${pkgs.waybar}/bin/waybar";
+      Restart = "on-failure";
+      Environment = [
+        "XDG_CURRENT_DESKTOP=sway"
+      ];
+    };
 
-  Install = {
-    WantedBy = [ "graphical-session.target" ];
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
   };
-};
 
 
 	programs.waybar.settings = {
@@ -43,10 +43,10 @@
 			modules-center = [ "sway/window" ];
 			modules-right = [ "tray" "power-profiles-daemon" "network" "wireplumber" "bluetooth" "battery" "clock" "custom/notification" ];
 
-			"custom/logo" = {
+      "custom/logo" = {
 				format = "";
 				tooltip = false;
-				on-click = ''wofi --show drun '';
+				on-click = ''launcher-script'';
 			};
 
 			"custom/notification" = {
@@ -134,6 +134,10 @@
 					power-saver = "";
 				};
 			};
+
+      "network" = {
+        on-click = "nmtui";
+      };
 
 			"tray" = {
 				spacing = 10;
