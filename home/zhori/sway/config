@@ -5,26 +5,10 @@ set $mod                Mod4
 set $term               kitty
 set $noctalia           noctalia-shell ipc call
 set $menu               $noctalia launcher toggle
-set $lock               $noctalia lockScreen lock
+set $lock               pkill -x noctalia-shell; $noctalia lockScreen lock
 set $notification       $noctalia notifications toggleHistory
 set $powermenu          $noctalia sessionMenu toggle
 set $bluetooth          $noctalia bluetooth togglePanel
-
-# locking
-# set $lock swaylock -f -i ~/.cache/wallpaper/current-wallpaper --effect-blur 7x5 --clock --indicator\
-# --indicator-radius 100 \
-# --indicator-thickness 7 \
-# --ignore-empty-password \
-# --ring-color 2a2e38 \
-# --key-hl-color 51afef \
-# --text-color bbc2cf \
-# --line-color 2a2e38 \
-# --inside-color 242730 \
-# --separator-color 00000000 \
-# --fade-in 0.1 \
-# --effect-scale 0.5 --effect-blur 7x3 --effect-scale 2 \
-# --effect-vignette 0.5:0.5 \
-
 
 # monitors
 set $laptop eDP-1
@@ -61,8 +45,8 @@ workspace 9 output $laptop
 workspace 10 output $laptop
 
 # handle lid closing
-bindswitch --reload --locked lid:on output $laptop disable
-bindswitch --reload --locked lid:off output $laptop enable
+# bindswitch --locked lid:on output $laptop disable
+# bindswitch --locked lid:off output $laptop enable
 
 # gestures
 bindgesture swipe:right workspace prev
@@ -84,11 +68,9 @@ exec_always blueman-applet
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 
 # lid handling
-exec_always swayidle \
-before-sleep '$noctalia' \
-timeout 300 '$lock' \
-timeout 600 'swaymsg "output * dpms off"' \
-resume 'swaymsg "output * dpms on"'
+exec_always pkill swayidle; swayidle -w \
+  before-sleep 'sh -c $lock && sleep 1' \
+  timeout 300 '$lock'
 
 exec emacs --daemon
 exec waypaper --restore
