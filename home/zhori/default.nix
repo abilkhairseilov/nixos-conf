@@ -38,7 +38,7 @@
     flameshot
     kanshi
 		wl-clipboard
-		clipman
+		cliphist
 		wlogout
     waypaper
 		swaybg

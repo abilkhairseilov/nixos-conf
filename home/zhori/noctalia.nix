@@ -29,7 +29,7 @@
           ];
 
           center = [
-            { id = "ActiveWindow"; maxWidth = 250; hideMode = "transparent"; scrollingMode = "hover"; showIcon = true; useFixedWidth = true; }
+            { id = "ActiveWindow"; maxWidth = 145; hideMode = "transparent"; scrollingMode = "hover"; showIcon = true; useFixedWidth = false; }
           ];
 
           right = [
