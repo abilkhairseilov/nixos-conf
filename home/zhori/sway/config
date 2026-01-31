@@ -114,7 +114,7 @@ bindsym $mod+e exec pcmanfm
 bindsym $mod+l exec $lock
 bindsym $mod+x exec $powermenu
 bindsym $mod+b exec $bluetooth
-bindsym $mod+n exec $notifications
+bindsym $mod+n exec $notification
 
 # bindsym $mod+v exec clipman pick -t wofi
 
