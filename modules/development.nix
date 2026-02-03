@@ -27,6 +27,8 @@
     vscode
     zlib
 
+    sqlite
+
     typst
     tinymist
     texliveFull

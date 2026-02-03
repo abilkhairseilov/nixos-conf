@@ -57,6 +57,8 @@
 		prismlauncher
     apotris
 
+    kdePackages.okular
+
 		gnomeExtensions.user-themes
 		gnomeExtensions.blur-my-shell
 		gnome-tweaks

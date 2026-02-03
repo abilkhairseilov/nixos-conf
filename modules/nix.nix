@@ -4,9 +4,9 @@
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
-    # cores = 2;
-    # max-jobs = 1;
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   nix.gc = {
     automatic = true;

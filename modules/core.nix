@@ -4,6 +4,7 @@
   networking.networkmanager.enable = true;
   services.printing.enable = true;
   security.rtkit.enable = true;
+  security.polkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -11,29 +12,4 @@
     pulse.enable = true;
     jack.enable = true;
   };
-
-  # ram is quite tight, 8 gb wont cut it
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 12 * 1024;
-  }];
-
-  zramSwap = {
-    enable = true;
-    memoryPercent = 50;
-    priority = 100;
-    algorithm = "lz4";
-  };
-
-  services.earlyoom = {
-    enable = true;
-    freeMemThreshold = 5;
-    freeSwapThreshold = 5;
-  };
-
-  security.polkit.enable = true;
-
-  powerManagement.enable = true;
-  boot.kernelParams = ["resume_offset=16818176"];
-  boot.resumeDevice = "/dev/disk/by-uuid/9847502b-880d-40d9-af61-402f40f2c744";
 }
