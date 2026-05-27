@@ -23,6 +23,7 @@
 			vi = "nvim";
 			cls = "clear";
       ff = "fastfetch";
+      e = "emacsclient -n";
 		};
 
 		initContent = ''

@@ -1,53 +1,49 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
+let
+  env = import ./env.nix;
+  getPkg = app: pkgs.${app.pkg};
+in
 {
 	home.username = "zhori";
 	home.homeDirectory = "/home/zhori";
 
 	home.stateVersion = "25.11";
 
-  services = {
-    mpris-proxy.enable = true;
-  };
-
 	imports = [
 		./shell.nix
-		./waybar.nix
     ./kitty.nix
     ./sway.nix
     ./gtk.nix
+    ./qt.nix
     ./noctalia.nix
-    ./scripts.nix
+    ./service.nix
+    ./xdg-entries.nix
+    ./git.nix
 	];
 
 	programs.zsh.enable = true;
 
 	home.packages = with pkgs; [
-		firefox
+    (getPkg env.defaultApps.launcher)
+    (getPkg env.defaultApps.fileManager)
+    (getPkg env.defaultApps.imageViewer)
+    (getPkg env.defaultApps.archiveManager)
+    (getPkg env.defaultApps.documentViewer)
+    (getPkg env.defaultApps.videoPlayer)
+
+    firefox
     vesktop
 
-		neovim
-		vim
-		emacs-pgtk
+    neovim
+    tmux
+    yazi
+		tree-sitter
+    emacs-pgtk
 
-		waybar
-		wofi
-		grim
-    slurp
-    satty
-    flameshot
     kanshi
-		wl-clipboard
-		cliphist
-		wlogout
-    waypaper
-		swaybg
-    swaynotificationcenter
-    nwg-drawer
-    nwg-panel
-    nwg-look
-    pcmanfm
     blueman
+    woomer
 
 		kitty
 		fzf
@@ -57,11 +53,33 @@
 		prismlauncher
     apotris
 
+		codex
+		inputs.t3code.packages.${pkgs.system}.default
+
     kdePackages.okular
+    darktable
+    cheese
 
-		gnomeExtensions.user-themes
-		gnomeExtensions.blur-my-shell
-		gnome-tweaks
+    picard
+    anki-bin
 
+    syncthing
+    keepassxc
 	];
+
+	xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      # File Manager for directories
+      "inode/directory" = [ "pcmanfm-qt.desktop" ];
+      
+      # Image Viewer for common formats
+      "image/jpeg" = [ "nomacs.desktop" ];
+      "image/png" = [ "nomacs.desktop" ];
+      "image/gif" = [ "nomacs.desktop" ];
+      "image/webp" = [ "nomacs.desktop" ];
+      "image/bmp" = [ "nomacs.desktop" ];
+      "image/tiff" = [ "nomacs.desktop" ];
+    };
+  };
 }

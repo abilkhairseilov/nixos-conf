@@ -1,0 +1,4 @@
+* Inbox
+** TODO Check up on Krita
+
+[[file:~/nixos/home/zhori/default.nix::note: with nixos-unstable, they are apparently migrating to cmake 4.0 which purges legacy code, so boost is affected and i have to wait for now]]

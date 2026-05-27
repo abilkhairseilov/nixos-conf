@@ -4,7 +4,7 @@
   programs.kitty = lib.mkForce {
     enable = true;
     settings = {
-      font_family                 = "JetBrainsMono Nerd Font Mono";
+      font_family                 = "Adwaita Mono Nerd Font Mono";
       font_size                   = 12;
 
       initial_window_width        = "80c";
@@ -21,73 +21,80 @@
       # Animated cursor follows text
       cursor_trail = 1;
 
-      # Colors
-      # Basic colors
-      foreground           = "#d8dee9";
-      background           = "#2e3440";
-      selection_foreground = "#d8dee9";
-      selection_background = "#434c5e";
+      # # Colors
+      # # Basic colors
+      # foreground           = "#d8dee9";
+      # background           = "#2e3440";
+      # selection_foreground = "#d8dee9";
+      # selection_background = "#434c5e";
 
-      # Cursor colors
-      cursor               = "#d8dee9";
-      cursor_text_color = "#3b4252";
+      # # Cursor colors
+      # cursor               = "#d8dee9";
+      # cursor_text_color = "#3b4252";
 
-      # URL underline color when hovering with mouse
-      url_color = "#0087bd";
-      # Window border colors and terminal bell colors
-      active_border_color   = "#81a1c1";
-      inactive_border_color = "#4c566a";
-      bell_border_color     = "#88c0d0";
-      visual_bell_color     = "none";
+      # # URL underline color when hovering with mouse
+      # url_color = "#0087bd";
+      # # Window border colors and terminal bell colors
+      # active_border_color   = "#81a1c1";
+      # inactive_border_color = "#4c566a";
+      # bell_border_color     = "#88c0d0";
+      # visual_bell_color     = "none";
 
-      # Tab bar colors
-      active_tab_foreground   = "#3b4252";
-      active_tab_background   = "#88c0d0";
-      inactive_tab_foreground = "#e5e9f0";
-      inactive_tab_background = "#4c566a";
-      tab_bar_background      = "#3b4252";
-      tab_bar_margin_color    = "none";
+      # # Tab bar colors
+      # active_tab_foreground   = "#3b4252";
+      # active_tab_background   = "#88c0d0";
+      # inactive_tab_foreground = "#e5e9f0";
+      # inactive_tab_background = "#4c566a";
+      # tab_bar_background      = "#3b4252";
+      # tab_bar_margin_color    = "none";
 
-      # Mark colors (marked text in the terminal)
-      mark1_foreground = "#3b4252";
-      mark1_background = "#88c0d0";
-      mark2_foreground = "#3b4252";
-      mark2_background = "#bf616a";
-      mark3_foreground = "#3b4252";
-      mark3_background = "#ebcb8b";
+      # # Mark colors (marked text in the terminal)
+      # mark1_foreground = "#3b4252";
+      # mark1_background = "#88c0d0";
+      # mark2_foreground = "#3b4252";
+      # mark2_background = "#bf616a";
+      # mark3_foreground = "#3b4252";
+      # mark3_background = "#ebcb8b";
 
-      # The basic 16 colors
-      # black
-      color0 = "#3b4252";
-      color8 = "#4c566a";
+      # # The basic 16 colors
+      # # black
+      # color0 = "#3b4252";
+      # color8 = "#4c566a";
 
-      # red
-      color1 = "#bf616a";
-      color9 = "#bf616a";
+      # # red
+      # color1 = "#bf616a";
+      # color9 = "#bf616a";
 
-      # green
-      color2  = "#a3be8c";
-      color10 = "#a3be8c";
+      # # green
+      # color2  = "#a3be8c";
+      # color10 = "#a3be8c";
 
-      # yellow
-      color3  = "#ebcb8b";
-      color11 = "#d08770";
+      # # yellow
+      # color3  = "#ebcb8b";
+      # color11 = "#d08770";
 
-      # blue
-      color4  = "#81a1c1";
-      color12 = "#5e81ac";
+      # # blue
+      # color4  = "#81a1c1";
+      # color12 = "#5e81ac";
 
-      # magenta
-      color5  = "#b48ead";
-      color13 = "#b48ead";
+      # # magenta
+      # color5  = "#b48ead";
+      # color13 = "#b48ead";
 
-      # cyan
-      color6  = "#88c0d0";
-      color14 = "#8fbcbb";
+      # # cyan
+      # color6  = "#88c0d0";
+      # color14 = "#8fbcbb";
 
-      # white
-      color7  = "#e5e9f0";
-      color15 = "#eceff4";
+      # # white
+      # color7  = "#e5e9f0";
+      # color15 = "#eceff4";
+      extraConfig = ''
+        include ~/.config/kitty/themes/noctalia.conf
+      '';
     };
   };
+
+  home.packages = with pkgs; [
+
+  ];
 }

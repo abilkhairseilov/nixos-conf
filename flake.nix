@@ -11,9 +11,10 @@
       url="github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+		t3code.url = "path:/home/zhori/nixos/probe/t3code";
   };
 
-  outputs = { self, nixpkgs, home-manager, noctalia, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, noctalia, t3code, ... }@inputs:
     let
       system = "x86_64-linux";
     in {

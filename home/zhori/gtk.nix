@@ -12,8 +12,8 @@
   gtk = {
 		enable = true;
 		theme = {
-			name = "Nordic-darker";
-      package = pkgs.nordic;
+			name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
 		};
     cursorTheme = {
       package = pkgs.graphite-cursors;

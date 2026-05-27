@@ -7,6 +7,7 @@
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
       nerd-fonts.symbols-only
+      nerd-fonts.adwaita-mono
       aporetic
       noto-fonts
       noto-fonts-color-emoji

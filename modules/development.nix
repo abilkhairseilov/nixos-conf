@@ -15,23 +15,21 @@
     zip
     unzip
 
-    gcc
-    nodejs_24
-    pnpm_9
-    svelte-language-server
-    llvmPackages_20.clang-unwrapped
-    python315
-    rustc
-    javaPackages.compiler.temurin-bin.jre-17
-    eclipses.eclipse-java
-    vscode
-    zlib
+    # gcc
+    # nodejs_24
+    # pnpm_9
+    # svelte-language-server
+    # llvmPackages_20.clang-unwrapped
+    # python315
+    # rustc
+    # javaPackages.compiler.temurin-bin.jre-17
+    #eclipses.eclipse-java
+    # zlib
 
-    sqlite
+    # sqlite
 
     typst
     tinymist
-    texliveFull
     pandoc
 
   ];
