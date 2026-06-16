@@ -24,5 +24,9 @@
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
+
+    gtk4 = {
+      theme = config.gtk.theme;
+    };
 	};
 }

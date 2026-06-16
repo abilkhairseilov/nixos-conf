@@ -34,6 +34,7 @@ in
 
     firefox
     vesktop
+		signal-desktop
 
     neovim
     tmux
@@ -49,12 +50,13 @@ in
 		fzf
 		zoxide
     fastfetch
+		vicinae
 
 		prismlauncher
     apotris
 
 		codex
-		inputs.t3code.packages.${pkgs.system}.default
+    t3code
 
     kdePackages.okular
     darktable

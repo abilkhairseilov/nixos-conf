@@ -8,6 +8,7 @@
       nerd-fonts.jetbrains-mono
       nerd-fonts.symbols-only
       nerd-fonts.adwaita-mono
+      nerd-fonts.iosevka
       aporetic
       noto-fonts
       noto-fonts-color-emoji

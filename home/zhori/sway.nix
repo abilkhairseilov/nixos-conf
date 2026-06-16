@@ -92,6 +92,7 @@
       keybindings =
         let
           mod             = "Mod4";
+					alt							= "Mod1";
           noctalia        = "noctalia-shell ipc call";
         in lib.mkOptionDefault {
           # Applications
@@ -99,13 +100,14 @@
           "${mod}+Shift+e"     = "exec emacsclient -c";
           "${mod}+q"           = "kill";
           "${mod}+d"           = "exec ${noctalia} launcher toggle";
-          "${mod}+e"           = "exec pcmanfm";
+          "${mod}+e"           = "exec pcmanfm-qt";
           "${mod}+l"           = "exec ${noctalia} lockScreen lock";
           "${mod}+x"           = "exec ${noctalia} sessionMenu toggle";
           "${mod}+b"           = "exec ${noctalia} bluetooth togglePanel";
           "${mod}+n"           = "exec ${noctalia} notifications toggleHistory";
           "${mod}+s"           = "exec ${noctalia} controlCenter toggle";
           "${mod}+z"           = "exec woomer";
+					"${alt}+Space"			 = "exec vicinae toggle";
 
           # Focus
           "${mod}+Left"        = "focus left";
@@ -209,6 +211,7 @@
           '';
         }
         { command = "noctalia-shell"; }
+        { command = "vicinae server"; }
       ];
       bars = [];
     };

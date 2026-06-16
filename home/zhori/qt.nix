@@ -3,10 +3,9 @@
 {
   qt = {
     enable = true;
-    platformTheme.name = "qt5ct";
-    style.name = "fusion";
+    platformTheme.name = "kvantum";
   };
   systemd.user.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt5ct";
+    QT_QPA_PLATFORMTHEME = "kvantum";
   };
 }

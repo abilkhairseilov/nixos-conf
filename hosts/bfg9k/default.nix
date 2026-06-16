@@ -79,6 +79,9 @@ SSD           512 GB
     };
     thermald.enable = true;
     upower.enable = true;
+    udev.extraRules = ''
+      SUBSYSTEM=="usb", DEVPATH=="*/3-7/*", ATTR{authorized}="0"
+    '';
   };
 
   boot.kernelParams = [ "resume_offset=16818176" "mem_sleep_default=s2idle" ];

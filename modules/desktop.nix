@@ -9,12 +9,7 @@
     };
 
     displayManager.ly.enable = true;
-    # desktopManager.gnome.enable = true;
 
-    # logind.lidSwitch = {
-    #   enable = true;
-    # };
-    #
     tailscale = {
       enable = true;
     };
@@ -28,6 +23,7 @@
         };
       };
     };
+
     gvfs.enable = true;
     udisks2.enable = true;
   };
@@ -50,6 +46,9 @@
 
     ntfs3g
     usbutils
+
+    wireguard-tools
+    proton-vpn
   ];
 
   # security.pam.service = {

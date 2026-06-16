@@ -46,7 +46,7 @@
 
 			# Environment
 			export PATH="$PATH:$HOME/.local/bin"
-			export EDITOR="vim"
+			export EDITOR="nvim"
 
 			# fzf & zoxide
 			eval "$(${pkgs.fzf}/bin/fzf --zsh)"

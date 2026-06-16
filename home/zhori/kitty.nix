@@ -4,8 +4,8 @@
   programs.kitty = lib.mkForce {
     enable = true;
     settings = {
-      font_family                 = "Adwaita Mono Nerd Font Mono";
-      font_size                   = 12;
+      font_family                 = "Iosevka Nerd Font Mono";
+      font_size                   = 14;
 
       initial_window_width        = "80c";
       initial_window_height       = "24c";
