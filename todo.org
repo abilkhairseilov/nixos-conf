@@ -1,4 +1,14 @@
 * Inbox
+** TODO Remove t3code input and any reference.
+
+t3code has been integrated into the official unstable packages, so my appimage implementation is now redundant.
+
+[[file:~/nixos/flake.nix::t3code.url = "path:/home/zhori/nixos/probe/t3code"; TODO: remove this input]]
+** TODO Check out this proton-vpn definition
+
+https://github.com/emmanuelrosa/erosanix/blob/master/modules/protonvpn.nix
+
+[[file:~/nixos/notes.org::*\[2026-01-28 Wed 21:01\] Cursor themes][[2026-01-28 Wed 21:01] Cursor themes]]
 ** TODO Check up on Krita
 
 [[file:~/nixos/home/zhori/default.nix::note: with nixos-unstable, they are apparently migrating to cmake 4.0 which purges legacy code, so boost is affected and i have to wait for now]]

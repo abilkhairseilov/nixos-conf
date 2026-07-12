@@ -45,6 +45,10 @@
 			zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 			# Environment
+			# Ensure setuid wrappers (sudo, etc.) take precedence over /run/current-system/sw/bin.
+			# tmux panes inherit the server's PATH, which can place /run/wrappers/bin after
+			# /run/current-system/sw/bin and break sudo. Prepend so the real setuid sudo wins.
+			path=("/run/wrappers/bin" $path)
 			export PATH="$PATH:$HOME/.local/bin"
 			export EDITOR="nvim"
 

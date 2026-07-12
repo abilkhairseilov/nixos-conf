@@ -10,7 +10,7 @@
   };
 
   gtk = {
-		enable = true;
+		enable = false;
 		theme = {
 			name = "adw-gtk3-dark";
       package = pkgs.adw-gtk3;
@@ -24,7 +24,6 @@
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
-
     gtk4 = {
       theme = config.gtk.theme;
     };

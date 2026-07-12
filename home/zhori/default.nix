@@ -3,6 +3,8 @@
 let
   env = import ./env.nix;
   getPkg = app: pkgs.${app.pkg};
+
+  defaultAppPkgs = builtins.map getPkg (builtins.attrValues env.defaultApps);
 in
 {
 	home.username = "zhori";
@@ -12,6 +14,7 @@ in
 
 	imports = [
 		./shell.nix
+    ./tmux.nix
     ./kitty.nix
     ./sway.nix
     ./gtk.nix
@@ -20,27 +23,25 @@ in
     ./service.nix
     ./xdg-entries.nix
     ./git.nix
+		./pywalfox.nix
 	];
 
 	programs.zsh.enable = true;
 
 	home.packages = with pkgs; [
-    (getPkg env.defaultApps.launcher)
-    (getPkg env.defaultApps.fileManager)
-    (getPkg env.defaultApps.imageViewer)
-    (getPkg env.defaultApps.archiveManager)
-    (getPkg env.defaultApps.documentViewer)
-    (getPkg env.defaultApps.videoPlayer)
 
     firefox
+		pywalfox-native
     vesktop
 		signal-desktop
 
     neovim
-    tmux
     yazi
 		tree-sitter
     emacs-pgtk
+
+		obsidian
+		zotero
 
     kanshi
     blueman
@@ -56,7 +57,7 @@ in
     apotris
 
 		codex
-    t3code
+		opencode
 
     kdePackages.okular
     darktable
@@ -67,7 +68,7 @@ in
 
     syncthing
     keepassxc
-	];
+	] ++ defaultAppPkgs;
 
 	xdg.mimeApps = {
     enable = true;

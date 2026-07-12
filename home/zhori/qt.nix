@@ -1,11 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-  qt = {
-    enable = true;
-    platformTheme.name = "kvantum";
-  };
-  systemd.user.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "kvantum";
-  };
+  # qt = {
+  #   enable = true;
+  # };
+  # systemd.user.sessionVariables = {
+  #   QT_QPA_PLATFORMTHEME = "qt6ct";
+  # };
 }

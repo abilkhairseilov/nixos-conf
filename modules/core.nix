@@ -5,6 +5,7 @@
   networking = {
    networkmanager.enable = true;
    firewall.checkReversePath = false;
+   nameservers = [ "1.1.1.1" "8.8.8.8" ];
   };
 
   services = {

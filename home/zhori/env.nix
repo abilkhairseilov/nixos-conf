@@ -33,5 +33,10 @@
       pkg = "mpv";
       launchArgs = "";
     };
+    musicPlayer = {
+      name = "fooyin";
+      pkg = "fooyin";
+      launchArgs = "";
+    };
   };
 }

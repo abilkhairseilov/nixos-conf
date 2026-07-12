@@ -1,0 +1,303 @@
+settingsVersion = 0
+
+[bar]
+barType = "floating"
+contentPadding = 4
+density = "default"
+monitors = []
+position = "top"
+screenOverrides = []
+
+    [bar.widgets]
+    capsule = true
+    end = [
+        "clipboard",
+        "bluetooth",
+        "brightness",
+        "tray",
+        "battery",
+        "network",
+        "volume",
+        "clock",
+        "notifications",
+        "control-center",
+        "session"
+    ]
+    font_family = "Iosevka Nerd Font"
+    font_weight = 400
+    start = [ "launcher", "workspaces", "wallpaper", "active_window" ]
+
+        [[bar.widgets.center]]
+        colorizeIcons = false
+        hideMode = "transparent"
+        id = "ActiveWindow"
+        maxWidth = 145
+        scrollingMode = "hover"
+        showIcon = true
+        textColor = "none"
+        useFixedWidth = false
+
+        [[bar.widgets.left]]
+        colorizeDistroLogo = false
+        colorizeSystemIcon = "none"
+        customIconPath = ""
+        enableColorization = true
+        icon = "noctalia"
+        id = "ControlCenter"
+        useDistroLogo = true
+
+        [[bar.widgets.left]]
+        characterCount = 1
+        colorizeIcons = true
+        emptyColor = "secondary"
+        enableScrollWheel = true
+        focusedColor = "primary"
+        followFocusedScreen = false
+        groupedBorderOpacity = 1
+        hideUnoccupied = false
+        iconScale = 0.80000000000000004
+        id = "Workspace"
+        labelMode = "name"
+        occupiedColor = "secondary"
+        pillSize = 0.75
+        showApplications = false
+        showBadge = true
+        showLabelsOnlyWhenOccupied = true
+        unfocusedIconsOpacity = 1
+
+        [[bar.widgets.right]]
+        blacklist = []
+        chevronColor = "none"
+        colorizeIcons = true
+        drawerEnabled = true
+        hidePassive = false
+        id = "Tray"
+        pinned = []
+
+        [[bar.widgets.right]]
+        id = "plugin:privacy-indicator"
+
+            [bar.widgets.right.defaultSettings]
+            activeColor = "primary"
+            enableToast = true
+            hideInactive = false
+            iconSpacing = 4
+            inactiveColor = "none"
+            micFilterRegex = ""
+            removeMargins = false
+
+        [[bar.widgets.right]]
+        id = "plugin:clipper"
+
+            [bar.widgets.right.defaultSettings]
+            enableTodoIntegration = false
+            notecardsEnabled = true
+            pincardsEnabled = true
+            position = "Bottom"
+            showCloseButton = false
+
+        [[bar.widgets.right]]
+        displayMode = "onhover"
+        iconColor = "none"
+        id = "Bluetooth"
+        textColor = "none"
+
+        [[bar.widgets.right]]
+        displayMode = "onhover"
+        iconColor = "none"
+        id = "Network"
+        textColor = "none"
+
+        [[bar.widgets.right]]
+        displayMode = "onhover"
+        iconColor = "none"
+        id = "Volume"
+        middleClickCommand = "pwvucontrol || pavucontrol"
+        textColor = "none"
+
+        [[bar.widgets.right]]
+        deviceNativePath = "__default__"
+        displayMode = ""
+        hideIfIdle = false
+        hideIfNotDetected = true
+        id = "Battery"
+        showNoctaliaPerformance = false
+        showPowerProfiles = false
+
+        [[bar.widgets.right]]
+        clockColor = "none"
+        customFont = ""
+        formatHorizontal = "HH:mm"
+        formatVertical = "HH mm"
+        id = "Clock"
+        tooltipFormat = "HH:mm ddd, MMM dd"
+        useCustomFont = false
+
+[calendar]
+enabled = true
+
+[colorSchemes]
+darkMode = true
+
+[config]
+
+[desktopWidgets]
+enabled = true
+gridSnap = true
+overviewEnabled = true
+
+    [[desktopWidgets.monitorWidgets]]
+    name = "HDMI-A-1"
+
+        [[desktopWidgets.monitorWidgets.widgets]]
+        id = "MediaPlayer"
+        showVisualizer = true
+        x = 100
+        y = 200
+
+        [[desktopWidgets.monitorWidgets.widgets]]
+        id = "Weather"
+        x = 100
+        y = 100
+
+        [[desktopWidgets.monitorWidgets.widgets]]
+        clockStyle = "binary"
+        format = "HH:mm\\nd MMMM yyyy"
+        id = "Clock"
+        x = 100
+        y = 300
+
+    [[desktopWidgets.monitorWidgets]]
+    name = "eDP-1"
+
+        [[desktopWidgets.monitorWidgets.widgets]]
+        clockStyle = "digital"
+        format = "HH:mm\\nd MMMM yyyy"
+        id = "Clock"
+        x = 1680
+        y = 860
+
+[general]
+avatarImage = "/home/zhori/Pictures/Duster_-_Duster_front_cover.jpg"
+enableLockScreenMediaControls = false
+lockScreenAnimations = false
+radiusRatio = 1.0
+showHibernateOnLockScreen = true
+showScreenCorners = true
+
+    [general.keybinds]
+    keyDown = [ "Down" ]
+    keyEnter = [ "Return" ]
+    keyEscape = [ "Esc" ]
+    keyLeft = [ "Left" ]
+    keyRemove = [ "Del" ]
+    keyRight = [ "Right" ]
+    keyUp = [ "Up" ]
+
+[location]
+analogClockInCalendar = true
+auto_locate = true
+name = "Doha, Qatar"
+use12hourFormat = false
+useFahrenheit = false
+weatherEnabled = true
+weatherShowEffects = true
+
+[lockscreen]
+fingerprint = false
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 768.0
+    cy = 741.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_login_button = true
+
+[nightLight]
+autoSchedule = true
+dayTemp = "6500"
+enabled = true
+nightTemp = "4000"
+
+[plugins]
+enabled = [ "noctalia/timer" ]
+
+[shell]
+font_family = "Aporetic Serif"
+
+[[templates.activeTemplates]]
+enabled = true
+id = "emacs"
+
+[[templates.activeTemplates]]
+enabled = true
+id = "gtk"
+
+[[templates.activeTemplates]]
+enabled = true
+id = "qt"
+
+[[templates.activeTemplates]]
+enabled = true
+id = "sway"
+
+[[templates.activeTemplates]]
+enabled = true
+id = "kitty"
+
+[theme]
+source = "wallpaper"
+
+    [theme.templates]
+    builtin_ids = [ "emacs", "gtk3", "gtk4", "kitty", "sway" ]
+    community_ids = [ "vicinae", "papirus-icons" ]
+
+[ui]
+fontDefault = "Aporetic Serif"
+fontDefaultScale = 1.1000000000000001
+fontFixed = "Aporetic Serif Mono"
+
+[wallpaper]
+directory = "/home/zhori/Pictures/Wallpapers"
+transition_on_startup = true
+
+    [wallpaper.default]
+    path = "/home/zhori/Pictures/Wallpapers/mountains.png"
+
+    [wallpaper.last]
+    path = "/home/zhori/Pictures/Wallpapers/mountains.png"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/zhori/Pictures/Wallpapers/mountains.png"
+
+[widget.battery]
+display_mode = "graphic"
+
+[widget.brightness]
+show_label = false
+
+[widget.network]
+show_label = false
+
+[widget.volume]
+show_label = false

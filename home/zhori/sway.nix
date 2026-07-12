@@ -15,9 +15,8 @@
     systemd.variables = [ "-all" ];
 
     config = {
-      modifier = "Mod4";
-      terminal = "kitty";
-      menu = "noctalia-shell ipc call launcher toggle";
+
+			modifier = "Mod4";
 
       fonts = {
         names = [ "JetBrainsMono Nerd Font" ];
@@ -65,16 +64,16 @@
         };
       };
 
-      output = {
-        "eDP-1" = {
-          pos   = "1920 0";
-          scale = "1.25";
-        };
-        "HDMI-A-1" = {
-          pos   = "0 0";
-          scale = "1";
-        };
-      };
+      # output = {
+      #   "eDP-1" = {
+      #     pos   = "1920 0";
+      #     scale = "1.00";
+      #   };
+      #   "HDMI-A-1" = {
+      #     pos   = "0 0";
+      #     scale = "1";
+      #   };
+      # };
 
       workspaceOutputAssign = [
         { workspace = "1";  output = "HDMI-A-1"; }
@@ -92,22 +91,23 @@
       keybindings =
         let
           mod             = "Mod4";
-					alt							= "Mod1";
-          noctalia        = "noctalia-shell ipc call";
+          alt              = "Mod1";
+          noctalia        = "noctalia msg";
         in lib.mkOptionDefault {
           # Applications
           "${mod}+Return"      = "exec kitty";
           "${mod}+Shift+e"     = "exec emacsclient -c";
           "${mod}+q"           = "kill";
-          "${mod}+d"           = "exec ${noctalia} launcher toggle";
+          "${mod}+d"           = "exec ${noctalia} panel-toggle launcher";
           "${mod}+e"           = "exec pcmanfm-qt";
-          "${mod}+l"           = "exec ${noctalia} lockScreen lock";
-          "${mod}+x"           = "exec ${noctalia} sessionMenu toggle";
-          "${mod}+b"           = "exec ${noctalia} bluetooth togglePanel";
-          "${mod}+n"           = "exec ${noctalia} notifications toggleHistory";
-          "${mod}+s"           = "exec ${noctalia} controlCenter toggle";
-          "${mod}+z"           = "exec woomer";
-					"${alt}+Space"			 = "exec vicinae toggle";
+          "${mod}+l"           = "exec ${noctalia} session lock";
+          "${mod}+x"           = "exec ${noctalia} panel-toggle session";
+          # "${mod}+b"           = "exec ${noctalia} bluetooth togglePanel";  TODO bluetooth binding
+          # "${mod}+n"           = "exec ${noctalia} notifications toggleHistory"; TODO notification
+          "${mod}+s"           = "exec ${noctalia} panel-toggle control-center";
+          # "${mod}+z"           = "exec woomer";
+          "${mod}+t"           = "exec tmux-session-dispensary";
+          "${alt}+Space"       = "exec vicinae toggle";
 
           # Focus
           "${mod}+Left"        = "focus left";
@@ -165,55 +165,59 @@
           "${mod}+Shift+u"     = "move workspace to output eDP-1";
 
           # Media keys
-          "XF86AudioRaiseVolume"  = "exec ${noctalia} volume increase";
-          "XF86AudioLowerVolume"  = "exec ${noctalia} volume decrease";
-          "XF86AudioMute"         = "exec ${noctalia} volume muteOutput";
-          "XF86AudioMicMute"      = "exec ${noctalia} volume muteInput";
-          "XF86MonBrightnessUp"   = "exec ${noctalia} brightness increase";
-          "XF86MonBrightnessDown" = "exec ${noctalia} brightness decrease";
+          "XF86AudioRaiseVolume"  = "exec ${noctalia} volume-up";
+          "XF86AudioLowerVolume"  = "exec ${noctalia} volume-down";
+          "XF86AudioMute"         = "exec ${noctalia} volume-mute";
+          "XF86AudioMicMute"      = "exec ${noctalia} mic-mute";
+          "XF86MonBrightnessUp"   = "exec ${noctalia} brightness-up";
+          "XF86MonBrightnessDown" = "exec ${noctalia} brightness-down";
 
           # Screenshot
-          "Print" = "exec grim -g \"$(slurp)\" - | satty --filename -";
+          # "Print" = "exec grim -g \"$(slurp)\" - | satty --filename -";
+          "Print" = "exec ${noctalia} screenshot-region";
         };
 
-      modes = {
-        resize = {
-          Left   = "resize shrink width 10px";
-          Down   = "resize grow height 10px";
-          Up     = "resize shrink height 10px";
-          Right  = "resize grow width 10px";
-          Return = "mode default";
-          Escape = "mode default";
+        modes = {
+          resize =
+            let
+              factor = "20px";
+            in {
+              Left   = "resize shrink width ${factor}";
+              Down   = "resize grow height ${factor}";
+              Up     = "resize shrink height ${factor}";
+              Right  = "resize grow width ${factor}";
+              Return = "mode default";
+              Escape = "mode default";
+            };
         };
-      };
 
-      floating = {
-        criteria = [
-          { window_type = "dialog"; }
-          { window_role = "dialog"; }
-        ];
-      };
+        floating = {
+          criteria = [
+            { window_type = "dialog"; }
+            { window_role = "dialog"; }
+          ];
+        };
 
-      startup = [
-        { command = "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"; }
-        { command = "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"; }
-        { command = "keepassxc --minimized"; }
-        { command = "emacs --daemon"; }
-        { command = "easyeffects -w"; }
-        { command = "wl-paste --type text --watch cliphist store"; }
-        { command = "wl-paste --type image --watch cliphist store"; }
-        {
-          command = ''
-            swayidle -w \
-              before-sleep 'noctalia-shell ipc call lockScreen lock' \
-              timeout 300 'noctalia-shell ipc call lockScreen lock' \
+        startup = [
+          { command = "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"; }
+          { command = "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"; }
+          { command = "keepassxc --minimized"; }
+          { command = "emacs --daemon"; }
+          { command = "easyeffects -w"; }
+          { command = "wl-paste --type text --watch cliphist store"; }
+          { command = "wl-paste --type image --watch cliphist store"; }
+          {
+            command = ''
+              swayidle -w \
+              before-sleep 'noctalia msg session lock' \
+              timeout 300 'noctalia msg session lock' \
               timeout 480 'systemctl suspend'
-          '';
-        }
-        { command = "noctalia-shell"; }
-        { command = "vicinae server"; }
-      ];
-      bars = [];
+            '';
+          }
+          { command = "noctalia"; }
+          { command = "vicinae server"; }
+        ];
+        bars = [];
     };
 
     extraConfig =
@@ -246,4 +250,62 @@
     swayidle
     woomer
   ];
+
+  home.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "qt6ct";
+  };
+
+  home.file.".icons/Papirus-Dark".source = "${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark";
+
+  services.kanshi = {
+    enable = true;
+    systemdTarget = "sway-session.target"; 
+
+    profiles = {
+      # Profile 1: Dual monitor setup (Your desk setup)
+      desk = {
+        outputs = [
+          {
+            criteria = "eDP-1";
+            position = "1920,0";
+            scale = 1.0;
+          }
+          {
+            criteria = "HDMI-A-1";
+            position = "0,0";
+            scale = 1.0;
+          }
+        ];
+      };
+
+      # Profile 2: Mobile setup (Only laptop screen when traveling)
+      undocked = {
+        outputs = [
+          {
+            criteria = "eDP-1";
+            position = "0,0";
+            scale = 1.0;
+          }
+        ];
+      };
+
+      # Profile 3: Presentation Mode (Laptop screen + ANY projector or external display)
+      presentation = {
+        outputs = [
+          {
+            criteria = "eDP-1";
+            position = "1920,0";
+            scale = 1.0;
+          }
+          {
+            criteria = "*"; # Match any unknown HDMI/VGA projector automatically
+            position = "0,0";
+            scale = 1.0;
+          }
+        ];
+      };
+    };
+  };
+
+
 }

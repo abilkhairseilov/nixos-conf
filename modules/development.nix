@@ -15,7 +15,7 @@
     zip
     unzip
 
-    # gcc
+    gcc
     # nodejs_24
     # pnpm_9
     # svelte-language-server
@@ -28,8 +28,10 @@
 
     # sqlite
 
-    typst
+		# lsps
     tinymist
+
+    typst
     pandoc
 
   ];
