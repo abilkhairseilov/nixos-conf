@@ -80,7 +80,7 @@ SSD           512 GB
     thermald.enable = true;
     upower.enable = true;
     udev.extraRules = ''
-      SUBSYSTEM=="usb", DEVPATH=="*/3-7/*", ATTR{authorized}="0"
+      SUBSYSTEM=="usb", KERNEL=="3-7", ATTR{authorized}="0"
     '';
   };
 

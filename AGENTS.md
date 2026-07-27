@@ -23,11 +23,13 @@ home/zhori/               # Home Manager config for user zhori
   tmux.nix                # tmux config + plugins + keybinds
   kitty.nix               # terminal (uses lib.mkForce)
   sway.nix                # swayfx + keybindings + kanshi + startup
+  labwc.nix               # labwc (stacking compositor) + keybinds + autostart
   gtk.nix qt.nix          # theming
   noctalia.nix            # noctalia-shell integration
   service.nix             # user systemd services
   xdg-entries.nix
   git.nix pywalfox.nix env.nix
+  tmux-session-dispensary.nix  # declarative bash session picker (writeShellApplication)
   noctalia/               # noctalia config (noctalia-config.toml)
 ```
 
@@ -35,12 +37,34 @@ Notable non-declarative / out-of-tree items (per README.md):
 - Disk partitioning is manual.
 - Theme, doomemacs config, and sway's non-HM config are not declarative.
 
+## Compositors
+
+Two Wayland sessions are enabled side-by-side and selectable at the `ly`
+login screen:
+
+- **sway** (`home/zhori/sway.nix`) — swayfx, tiling. Primary historical config.
+- **labwc** (`home/zhori/labwc.nix`) — stacking compositor using HM's
+  `wayland.windowManager.labwc` module (XML `rc`/`menu`/`autostart`/
+  `environment`). `package = null` (uses the system-level labwc from
+  `modules/desktop.nix`). Keybinds mirror sway where stacking has an analog;
+  tiling-only binds (splith/splitv, focus parent, scratchpad, floating
+  toggle, resize mode) are dropped. `W-<arrow>` snaps (via labwc default
+  keybinds), `W-S-<arrow>` = `MoveToEdge`, `W-r` = interactive `Resize`.
+  Noctalia's `labwc` template writes `~/.local/share/themes/noctalia/openbox-3/themerc`
+  and runs `apply.sh`, which `sed -i`s `~/.config/labwc/rc.xml` — breaking
+  HM's store symlink. `home.activation.labwcRcCleanup` removes a stale
+  regular-file `rc.xml` before `checkLinkTargets` so rebuilds stay clean.
+
+`services.kanshi.systemdTarget` in `sway.nix` is `graphical-session.target`
+(not `sway-session.target`) so kanshi runs under either session. The
+`noctalia.nix` `templates.activeTemplates` list contains both `sway` and
+`labwc`; noctalia generates both configs side-by-side.
+
 ## Flake inputs
 
 - `nixpkgs` (nixos-unstable)
 - `home-manager` (follows nixpkgs)
 - `noctalia` (noctalia-shell)
-- `neu-nix` (declared but currently unused in outputs)
 
 ## Build / apply
 
@@ -62,13 +86,19 @@ of the system rebuild — no separate `home-manager switch` needed.
 
 ## tmux-session-dispensary
 
-A hand-written bash session picker. **Lives outside this repo** at
-`~/.local/bin/tmux-session-dispensary` (not managed by Nix). Sourced from
-two places:
+A hand-written bash session picker. **Declarative** — built via
+`pkgs.writeShellApplication` in `home/zhori/tmux-session-dispensary.nix`
+(imported by `home/zhori/default.nix`) and exposed on `home.packages` as
+`tmux-session-dispensary` on PATH. `bashOptions = []` (the default
+`errexit`/`nounset` would break `${seen[$bmp]}` lookups on missing keys and
+the `[[ -n "$selected" ]]` trailing-return idiom). `runtimeInputs` pins
+`fzf tmux yazi gawk findutils gnused`. The legacy out-of-tree copy at
+`~/.local/bin/tmux-session-dispensary` is now shadowed by the Nix store
+binary — delete it once this rebuild is applied. Sourced from two places:
 
 | Trigger              | Where                        | Behavior                                   |
 |----------------------|------------------------------|--------------------------------------------|
-| `Mod4+t` (sway)      | `home/zhori/sway.nix:109`    | `exec tmux-session-dispensary` (terminal)  |
+| `Mod4+t` (sway/labwc) | `home/zhori/sway.nix:109`, `home/zhori/labwc.nix` | `exec kitty tmux-session-dispensary` (terminal)  |
 | `prefix f` (tmux)    | `home/zhori/tmux.nix:52`     | `display-popup -E "tmux-session-dispensary"` |
 
 ### Dispatch model (important)
@@ -96,6 +126,11 @@ The script branches on whether it's run inside tmux (`$TMUX` set):
 Hardcoded array near the top of the script (`bookmarks=(...)`). Edit there
 directly — no external config file.
 
+### Bookmarks
+
+Hardcoded array near the top of `home/zhori/tmux-session-dispensary.nix`
+(`bookmarks=(...)`). Edit there directly — no external config file.
+
 ## tmux keybinds (prefix = Ctrl-space)
 
 - `prefix f` — session dispenser popup
@@ -118,3 +153,23 @@ Plugins (managed by Home Manager, paths are store-prefixed in the generated
 
 kanshi profiles live in `home/zhori/sway.nix`: `desk`, `undocked`,
 `presentation`.
+
+## labwc keybinds (mod = Mod4)
+
+Same app/session binds as sway (kitty, tmux-dispensary, noctalia launcher/
+lock/control-center, emacsclient, vicinae on `Mod1+Space`). Differences
+because labwc is stacking:
+
+- `Mod4+<arrow>` — `SnapToEdge` half/quarter (from labwc default keybinds)
+- `Mod4+Shift+<arrow>` — `MoveToEdge`
+- `Mod4+r` — interactive `Resize` (no mode system)
+- `Mod4+Shift+c` — `Reconfigure` (labwc's reload)
+- `Mod4+Shift+u` — `MoveToOutput eDP-1` (moves window, not whole workspace;
+  labwc has no "move workspace to output")
+- Dropped: `splith`/`splitv`, `focus parent`, scratchpad, floating toggle,
+  focus mode_toggle, resize mode.
+
+`rc.xml` is fully declarative; `home.activation.labwcRcCleanup` in
+`home/zhori/labwc.nix` removes a stale regular-file `rc.xml` before
+`checkLinkTargets` so noctalia's `apply.sh` (which `sed -i`s it) doesn't
+break the next `nixos-rebuild`.

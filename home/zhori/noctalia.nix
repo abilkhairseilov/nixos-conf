@@ -4,15 +4,6 @@
     inputs.noctalia.homeModules.default
   ];
 
-       #   error: The option `home-manager.users.zhori.programs.noctalia-shell' does not exist. Definition values:
-       # - In `/nix/store/11r29cz8pfm6yfnl5yr844ah250y38k9-source/home/zhori/noctalia.nix':
-       #     {
-       #       enable = true;
-       #       settings = {
-       #         bar = {
-       #           barType = "floating";
-
-
   programs.noctalia = {
     enable = true;
     settings = {
@@ -189,6 +180,10 @@
           {
             enabled = true;
             id = "sway";
+          }
+          {
+            enabled = true;
+            id = "labwc";
           }
           {
             enabled = true;

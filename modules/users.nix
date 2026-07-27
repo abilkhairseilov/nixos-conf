@@ -3,7 +3,7 @@
 {
   users.users.zhori = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "input" ];
     shell = pkgs.zsh;
   };
 

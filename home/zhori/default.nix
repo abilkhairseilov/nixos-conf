@@ -17,13 +17,13 @@ in
     ./tmux.nix
     ./kitty.nix
     ./sway.nix
+    ./labwc.nix
     ./gtk.nix
-    ./qt.nix
     ./noctalia.nix
     ./service.nix
-    ./xdg-entries.nix
-    ./git.nix
+		./git.nix
 		./pywalfox.nix
+		./tmux-session-dispensary.nix
 	];
 
 	programs.zsh.enable = true;
@@ -55,6 +55,10 @@ in
 
 		prismlauncher
     apotris
+
+		steam-tui
+		protontricks
+		gamescope
 
 		codex
 		opencode

@@ -106,7 +106,7 @@
           # "${mod}+n"           = "exec ${noctalia} notifications toggleHistory"; TODO notification
           "${mod}+s"           = "exec ${noctalia} panel-toggle control-center";
           # "${mod}+z"           = "exec woomer";
-          "${mod}+t"           = "exec tmux-session-dispensary";
+          "${mod}+t"           = "exec kitty tmux-session-dispensary";
           "${alt}+Space"       = "exec vicinae toggle";
 
           # Focus
@@ -259,7 +259,7 @@
 
   services.kanshi = {
     enable = true;
-    systemdTarget = "sway-session.target"; 
+    systemdTarget = "graphical-session.target";
 
     profiles = {
       # Profile 1: Dual monitor setup (Your desk setup)

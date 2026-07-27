@@ -11,11 +11,6 @@
       url="github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-		neu-nix = {
-      url = "github:ricardomaps/neu-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
   };
 
   outputs = { self, nixpkgs, home-manager, noctalia, ... }@inputs:

@@ -45,6 +45,7 @@
 
     libsForQt5.qt5ct
     kdePackages.qt6ct
+    # labwc
 
     easyeffects
     pavucontrol
@@ -76,10 +77,19 @@
 
   programs = {
     sway.enable = true;
+		labwc.enable = true;
+		# hyprland = {
+		# 	enable = true;
+		# 	xwayland.enable = true;
+		# };
     appimage = {
       enable = true;
       binfmt = true;
     };
+		steam = {
+			enable = true;
+			remotePlay.openFirewall = true;
+		};
   };
 
 }

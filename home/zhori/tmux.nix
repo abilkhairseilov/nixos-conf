@@ -18,6 +18,10 @@
       # True color
       set -ga terminal-overrides ",xterm-256color:Tc"
 
+      # Renumber windows automatically when one is closed
+      set -g renumber-windows on
+      bind r move-window -r
+
       # Status bar
       set -g status-position bottom
       set -g status-style "bg=#1a1b26,fg=#a9b1d6"

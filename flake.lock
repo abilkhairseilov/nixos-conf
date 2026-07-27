@@ -7,46 +7,26 @@
         ]
       },
       "locked": {
-        "lastModified": 1783388784,
-        "narHash": "sha256-w+YU5vatysjLZIg1wOKSzo/RL9Z66eBQuIjVnBM/1Zg=",
+        "lastModified": 1784351324,
+        "narHash": "sha256-By+kuRJZRqs2TuXgtR8vJ8cTKWXw33YG/Yollu5cO1U=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "63d02d1c19f1c2b47a5bc7e55c620b6af7b218a6",
+        "rev": "460108009ca1ff69ca2ff19079ca2c838d6e3080",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "neu-nix": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1783369882,
-        "narHash": "sha256-kOmvS0sGLrix4ZlAdwUyqfdslBOe9hOpUgTQ/mFS7vQ=",
-        "owner": "ricardomaps",
-        "repo": "neu-nix",
-        "rev": "d04fe1262cc5444861588d44e7adc7446a977b3d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ricardomaps",
-        "repo": "neu-nix",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1783224372,
-        "narHash": "sha256-8i/87eeoqiGE4yOTjwSA3Eh/ziJRQEmd/unYU+K27sk=",
+        "lastModified": 1784356753,
+        "narHash": "sha256-12KrbMiWLcf8m7pCvAtZh1ZrgF85ZXDXvfR/fWTKy84=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d407951447dcd00442e97087bf374aad70c04cea",
+        "rev": "61b7c44c4073f0b827768aff0049561b5110ea5a",
         "type": "github"
       },
       "original": {
@@ -63,11 +43,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783390654,
-        "narHash": "sha256-+cU2X9DohZss+XShIwd/bhBDFKMV8dCTzdHG+QwKD58=",
+        "lastModified": 1784384155,
+        "narHash": "sha256-fTngKDxReMmrD+vIQDQcQUEW//rHjIcH2GnVCG3xPeo=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "387acd008226881f2a04cf259dedd58cf8f2b58c",
+        "rev": "80198e9695b3d19fb1b9a8d6c69b4dd4bf8fb043",
         "type": "github"
       },
       "original": {
@@ -79,7 +59,6 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "neu-nix": "neu-nix",
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia"
       }
