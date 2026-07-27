@@ -32,7 +32,7 @@ in
 
       theme = {
         name = "noctalia";
-        cornerRadius = 12;
+        cornerRadius = 0;
         font = {
           "@name" = "JetBrainsMono Nerd Font";
           "@size" = "10";
