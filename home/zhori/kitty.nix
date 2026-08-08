@@ -22,7 +22,7 @@
       cursor_trail = 1;
 
       extraConfig = ''
-        include ${config.home.homeDirectory}.config/kitty/themes/noctalia.conf
+        include ${config.home.homeDirectory}/.config/kitty/themes/noctalia.conf
       '';
     };
   };

@@ -39,7 +39,8 @@ in
     yazi
 		tree-sitter
     emacs-pgtk
-
+    helix # helix is the new cool kid in the town
+    
 		obsidian
 		zotero
 

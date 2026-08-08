@@ -19,8 +19,8 @@
       launchArgs = "";
     };
     archiveManager = {
-      name = "file-roller";
-      pkg = "file-roller";
+      name = "ark";
+      pkg = "ark";
       launchArgs = "";
     };
     documentViewer = {

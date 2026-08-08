@@ -30,6 +30,7 @@
 
 		# lsps
     tinymist
+    nixd
 
     typst
     pandoc

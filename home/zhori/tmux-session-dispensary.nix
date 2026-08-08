@@ -14,6 +14,7 @@
         # 1. Define your hardcoded bookmarks here (No external config files needed!)
         bookmarks=(
           "$HOME/.config/nvim"
+          "$HOME/.config/helix"
           "$HOME/nixos"
           "$HOME/notes/md"
           "$HOME/notes/typst"
