@@ -251,10 +251,6 @@
     woomer
   ];
 
-  home.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt6ct";
-  };
-
   home.file.".icons/Papirus-Dark".source = "${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark";
 
   services.kanshi = {

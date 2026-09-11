@@ -116,6 +116,7 @@ in
       "noctalia &"
       "vicinae server &"
       "libinput-gestures &"
+      "sway-audio-idle-inhibit &"
     ];
   };
 
@@ -141,6 +142,7 @@ in
     cliphist
     wl-clipboard
     swayidle
+    sway-audio-idle-inhibit
     woomer
     libinput-gestures
     wtype

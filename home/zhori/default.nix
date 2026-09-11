@@ -15,7 +15,8 @@ in
 	imports = [
 		./shell.nix
     ./tmux.nix
-    ./kitty.nix
+		./kitty.nix
+		./qt.nix
     ./sway.nix
     ./labwc.nix
     ./gtk.nix
@@ -24,6 +25,7 @@ in
 		./git.nix
 		./pywalfox.nix
 		./tmux-session-dispensary.nix
+		./games.nix
 	];
 
 	programs.zsh.enable = true;
@@ -54,13 +56,6 @@ in
     fastfetch
 		vicinae
 
-		prismlauncher
-    apotris
-
-		steam-tui
-		protontricks
-		gamescope
-
 		codex
 		opencode
 
@@ -73,6 +68,8 @@ in
 
     syncthing
     keepassxc
+
+    mpv-handler
 	] ++ defaultAppPkgs;
 
 	xdg.mimeApps = {
@@ -88,6 +85,7 @@ in
       "image/webp" = [ "nomacs.desktop" ];
       "image/bmp" = [ "nomacs.desktop" ];
       "image/tiff" = [ "nomacs.desktop" ];
+      "x-scheme-handler/mpv" = ["mpv-handler.desktop"];
     };
   };
 }
