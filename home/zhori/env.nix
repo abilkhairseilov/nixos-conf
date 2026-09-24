@@ -3,11 +3,11 @@
     name = "Aporetic Sans Mono";
   };
   defaultApps = {
-    launcher = {
-      name = "wofi";
-      pkg = "wofi";
-      launchArgs = "--show drun";
-    };
+    # launcher = {
+    #   name = "wofi";
+    #   pkg = "wofi";
+    #   launchArgs = "--show drun";
+    # };
     fileManager = {
       name = "pcmanfm-qt";
       pkg = "pcmanfm-qt";
@@ -16,11 +16,6 @@
     imageViewer = {
       name = "nomacs";
       pkg = "nomacs";
-      launchArgs = "";
-    };
-    archiveManager = {
-      name = "ark";
-      pkg = "ark";
       launchArgs = "";
     };
     documentViewer = {

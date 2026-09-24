@@ -15,6 +15,7 @@
         bookmarks=(
           "$HOME/.config/nvim"
           "$HOME/.config/helix"
+          "$HOME/.config/hypr"
           "$HOME/nixos"
           "$HOME/notes/md"
           "$HOME/notes/typst"

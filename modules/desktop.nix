@@ -76,12 +76,12 @@
   };
 
   programs = {
-    sway.enable = true;
+    # sway.enable = true;
 		labwc.enable = true;
-		# hyprland = {
-		# 	enable = true;
-		# 	xwayland.enable = true;
-		# };
+		hyprland = {
+			enable = true;
+			xwayland.enable = true;
+		};
     appimage = {
       enable = true;
       binfmt = true;

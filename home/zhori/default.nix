@@ -70,6 +70,8 @@ in
     keepassxc
 
     mpv-handler
+
+    kdePackages.ark
 	] ++ defaultAppPkgs;
 
 	xdg.mimeApps = {
@@ -79,13 +81,13 @@ in
       "inode/directory" = [ "pcmanfm-qt.desktop" ];
       
       # Image Viewer for common formats
-      "image/jpeg" = [ "nomacs.desktop" ];
-      "image/png" = [ "nomacs.desktop" ];
-      "image/gif" = [ "nomacs.desktop" ];
-      "image/webp" = [ "nomacs.desktop" ];
-      "image/bmp" = [ "nomacs.desktop" ];
-      "image/tiff" = [ "nomacs.desktop" ];
-      "x-scheme-handler/mpv" = ["mpv-handler.desktop"];
+      "image/jpeg" =  "nomacs.desktop" ;
+      "image/png" =  "nomacs.desktop" ;
+      "image/gif" =  "nomacs.desktop" ;
+      "image/webp" =  "nomacs.desktop" ;
+      "image/bmp" =  "nomacs.desktop" ;
+      "image/tiff" =  "nomacs.desktop" ;
+      "x-scheme-handler/mpv" = "mpv-handler.desktop";
     };
   };
 }

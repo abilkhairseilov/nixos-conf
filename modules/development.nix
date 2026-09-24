@@ -25,7 +25,8 @@
     # javaPackages.compiler.temurin-bin.jre-17
     #eclipses.eclipse-java
     # zlib
-
+    uv
+    
     # sqlite
 
 		# lsps
