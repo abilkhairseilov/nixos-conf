@@ -1,11 +1,5 @@
 { pkgs, inputs, ... }:
 
-let
-  env = import ./env.nix;
-  getPkg = app: pkgs.${app.pkg};
-
-  defaultAppPkgs = builtins.map getPkg (builtins.attrValues env.defaultApps);
-in
 {
 	home.username = "zhori";
 	home.homeDirectory = "/home/zhori";
@@ -17,15 +11,18 @@ in
     ./tmux.nix
 		./kitty.nix
 		./qt.nix
-    ./sway.nix
-    ./labwc.nix
+    # ./sway.nix
+    # ./labwc.nix
     ./gtk.nix
-    ./noctalia.nix
+    # ./noctalia.nix
     ./service.nix
 		./git.nix
 		./pywalfox.nix
 		./tmux-session-dispensary.nix
 		./games.nix
+		./hypr.nix
+		./quickshell.nix
+
 	];
 
 	programs.zsh.enable = true;
@@ -45,6 +42,12 @@ in
     
 		obsidian
 		zotero
+		sioyek
+
+		krita
+
+		cliphist
+		wl-clipboard
 
     kanshi
     blueman
@@ -72,13 +75,12 @@ in
     mpv-handler
 
     kdePackages.ark
-	] ++ defaultAppPkgs;
-
+	];
 	xdg.mimeApps = {
     enable = true;
     defaultApplications = {
       # File Manager for directories
-      "inode/directory" = [ "pcmanfm-qt.desktop" ];
+      "inode/directory" = [ "thunar.desktop" ];
       
       # Image Viewer for common formats
       "image/jpeg" =  "nomacs.desktop" ;

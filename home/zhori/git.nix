@@ -20,7 +20,7 @@
         init.defaultBranch = "main";
 
         core = {
-          editor     = "emacs";
+          editor     = "nvim";
           autocrlf   = "input";            # LF on commit, no conversion on checkout
           whitespace = "trailing-space,space-before-tab";
         };

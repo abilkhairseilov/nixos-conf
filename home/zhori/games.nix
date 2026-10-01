@@ -5,8 +5,10 @@
 		prismlauncher
     apotris
 
+    rkpd2
+    balatro
+
 		steam-tui
-		protontricks
 		gamescope
 
     uzdoom

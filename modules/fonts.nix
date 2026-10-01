@@ -9,10 +9,15 @@
       nerd-fonts.symbols-only
       nerd-fonts.adwaita-mono
       nerd-fonts.iosevka
+      nerd-fonts.bigblue-terminal
+
+      font-awesome
+			material-symbols
+
       aporetic
+
       noto-fonts
       noto-fonts-color-emoji
-      font-awesome
       corefonts
       vista-fonts
     ];

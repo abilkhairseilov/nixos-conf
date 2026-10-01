@@ -11,6 +11,10 @@
       url="github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs"; # Crucial to prevent system dependency crashes
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, noctalia, ... }@inputs:

@@ -24,7 +24,7 @@
 
     extraConfig = ''
       include ${config.home.homeDirectory}/.config/kitty/themes/noctalia.conf
-      font_family                 Iosevka NFM
+      font_family                 BigBlueTerm437 Nerd Font Mono
       font_size                   14
       initial_window_width        80c
       initial_window_height       24c

@@ -23,26 +23,26 @@
 		};
 	};
 
-	xdg.configFile = {
-		"qt5ct/qt5ct.conf" = {
-			force = true;
-			text = ''
-				[Appearance]
-				color_scheme_path=/home/zhori/.config/qt5ct/colors/noctalia.conf
-				custom_palette=true
-				icon_theme=Papirus-Dark
-				style=kvantum
-			'';
-		};
-		"qt6ct/qt6ct.conf" = {
-			force = true;
-			text = ''
-				[Appearance]
-				color_scheme_path=/home/zhori/.config/qt6ct/colors/noctalia.conf
-				custom_palette=true
-				icon_theme=Papirus-Dark
-				style=kvantum
-			'';
-		};
-	};
+	# xdg.configFile = {
+	# 	"qt5ct/qt5ct.conf" = {
+	# 		force = true;
+	# 		text = ''
+	# 			[Appearance]
+	# 			color_scheme_path=/home/zhori/.config/qt5ct/colors/noctalia.conf
+	# 			custom_palette=true
+	# 			icon_theme=Papirus-Dark
+	# 			style=kvantum
+	# 		'';
+	# 	};
+	# 	"qt6ct/qt6ct.conf" = {
+	# 		force = true;
+	# 		text = ''
+	# 			[Appearance]
+	# 			color_scheme_path=/home/zhori/.config/qt6ct/colors/noctalia.conf
+	# 			custom_palette=true
+	# 			icon_theme=Papirus-Dark
+	# 			style=kvantum
+	# 		'';
+	# 	};
+	# };
 }

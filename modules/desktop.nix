@@ -45,7 +45,13 @@
 
     libsForQt5.qt5ct
     kdePackages.qt6ct
+    qt6Packages.qt5compat
+		qt5.qtgraphicaleffects
     # labwc
+
+		hyprlock
+		hypridle
+		hyprshot
 
     easyeffects
     pavucontrol
@@ -77,11 +83,19 @@
 
   programs = {
     # sway.enable = true;
-		labwc.enable = true;
+		# labwc.enable = true;
+		# hyprland = {
+		# 	enable = true;
+		# 	xwayland.enable = true;
+		# };
+
+
 		hyprland = {
 			enable = true;
 			xwayland.enable = true;
 		};
+
+
     appimage = {
       enable = true;
       binfmt = true;

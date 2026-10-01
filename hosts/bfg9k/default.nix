@@ -28,6 +28,23 @@ SSD           512 GB
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.plymouth = {
+    enable = true;
+  };
+
+  boot.consoleLogLevel = 3;
+  boot.initrd.verbose = false;
+  
+  systemd.services.disable-fingerprint-usb = {
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig.Type = "oneshot";
+
+    script = ''
+      echo 1 > /sys/bus/usb/devices/usb3/3-0:1.0/usb3-port7/disable
+    '';
+  };
+
   hardware = {
     cpu.intel.updateMicrocode = true;
     graphics = {
@@ -84,7 +101,7 @@ SSD           512 GB
     '';
   };
 
-  boot.kernelParams = [ "resume_offset=16818176" "mem_sleep_default=s2idle" ];
+  boot.kernelParams = [ "resume_offset=16818176" "mem_sleep_default=s2idle" "quiet" "rd.udev.log_level=3" "rd.systemd.show_status=auto"];
   boot.resumeDevice = "/dev/disk/by-uuid/9847502b-880d-40d9-af61-402f40f2c744";
 
   system.stateVersion = "25.11";
