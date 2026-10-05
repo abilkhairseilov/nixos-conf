@@ -8,7 +8,7 @@
     mouse = true;
     historyLimit = 50000;
     baseIndex = 1;
-    clock24 = false;
+    clock24 = true;
     extraConfig = ''
       # Leader: Ctrl-space
       unbind C-space
@@ -23,22 +23,34 @@
       bind r move-window -r
 
       # Status bar
-      set -g status-position bottom
-      set -g status-style "bg=#1a1b26,fg=#a9b1d6"
-      set -g status-left "#[fg=#7aa2f7,bold] #S "
-      set -g status-right "#[fg=#565f89] %H:%M "
-      set -g window-status-format " #I:#W "
-      set -g window-status-current-format "#[fg=#1a1b26,bg=#7aa2f7,bold] #I:#W "
-      set -g pane-active-border-style "fg=#7aa2f7"
-      set -g pane-border-style "fg=#3b4261"
+			set -g status-position top
+			set -g status-interval 5
+			set -g status-style 'fg=default bg=default'
+			set -g message-style 'fg=default,bg=default'
+			set -g message-command-style reverse
 
+			# set -g status-left-length 20
+			# set -g status-left "#S "
+
+			set -g status-justify absolute-centre
+			setw -g window-status-current-style 'fg=green bold bg=default'
+			setw -g window-status-style 'fg=default'
+			setw -g window-status-format "#I:#W"
+			setw -g window-status-current-format "#I:#W"
+
+# run-shell ~/git/tmux-battery/battery.tmux
+# set -g status-right-length 100
+# set -g status-right '#{battery_percentage} %a %h %d %H:%M '
+
+			set -g pane-border-lines simple
+			set -g pane-border-style fg=colour241
+			set -g pane-active-border-style fg=colour39
       # Splits in current path
       bind | split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"
       unbind '"'
       unbind %
 
-      # Vim-style pane switching (fallback when tmux-navigator isn't active)
       bind h select-pane -L
       bind j select-pane -D
       bind k select-pane -U

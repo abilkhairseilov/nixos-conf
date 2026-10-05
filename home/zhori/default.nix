@@ -11,10 +11,7 @@
     ./tmux.nix
 		./kitty.nix
 		./qt.nix
-    # ./sway.nix
-    # ./labwc.nix
     ./gtk.nix
-    # ./noctalia.nix
     ./service.nix
 		./git.nix
 		./pywalfox.nix
@@ -22,7 +19,6 @@
 		./games.nix
 		./hypr.nix
 		./quickshell.nix
-
 	];
 
 	programs.zsh.enable = true;
@@ -32,12 +28,7 @@
     firefox
 		pywalfox-native
     vesktop
-		signal-desktop
 
-    neovim
-    yazi
-		tree-sitter
-    emacs-pgtk
     helix # helix is the new cool kid in the town
     
 		obsidian
@@ -45,13 +36,12 @@
 		sioyek
 
 		krita
-
-		cliphist
-		wl-clipboard
+		upscayl
+		nomacs
+		vlc
 
     kanshi
     blueman
-    woomer
 
 		kitty
 		fzf
@@ -77,19 +67,35 @@
     kdePackages.ark
 	];
 	xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      # File Manager for directories
-      "inode/directory" = [ "thunar.desktop" ];
-      
-      # Image Viewer for common formats
-      "image/jpeg" =  "nomacs.desktop" ;
-      "image/png" =  "nomacs.desktop" ;
-      "image/gif" =  "nomacs.desktop" ;
-      "image/webp" =  "nomacs.desktop" ;
-      "image/bmp" =  "nomacs.desktop" ;
-      "image/tiff" =  "nomacs.desktop" ;
-      "x-scheme-handler/mpv" = "mpv-handler.desktop";
-    };
-  };
+	  enable = true;
+
+	  defaultApplications = {
+	  	#pdfs
+	    "application/pdf" = [ "sioyek.desktop" ];
+
+	    # images
+	    "image/png" = [ "org.nomacs.ImageLounge.desktop" ];
+	    "image/jpeg" = [ "org.nomacs.ImageLounge.desktop" ];
+	    "image/gif" = [ "org.nomacs.ImageLounge.desktop" ];
+	    "image/webp" = [ "org.nomacs.ImageLounge.desktop" ];
+	    "image/bmp" = [ "org.nomacs.ImageLounge.desktop" ];
+	    "image/tiff" = [ "org.nomacs.ImageLounge.desktop" ];
+	    "image/svg+xml" = [ "org.nomacs.ImageLounge.desktop" ];
+
+			"inode/directory" = ["org.kde.dolphin.desktop"];
+	  };
+
+	  # just in case
+	  associations.added = {
+	    "application/pdf" = [ "sioyek.desktop" ];
+
+	    "image/png" = [ "org.nomacs.ImageLounge.desktop" ];
+	    "image/jpeg" = [ "org.nomacs.ImageLounge.desktop" ];
+	    "image/gif" = [ "org.nomacs.ImageLounge.desktop" ];
+	    "image/webp" = [ "org.nomacs.ImageLounge.desktop" ];
+	    "image/bmp" = [ "org.nomacs.ImageLounge.desktop" ];
+	    "image/tiff" = [ "org.nomacs.ImageLounge.desktop" ];
+	    "image/svg+xml" = [ "org.nomacs.ImageLounge.desktop" ];
+	  };
+	};
 }

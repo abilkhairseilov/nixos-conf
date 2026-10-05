@@ -5,7 +5,7 @@
 
     git
 		gh
-		curl
+		curlFull
 		wget
 		ripgrep
 		fd
@@ -15,29 +15,26 @@
     zip
     unzip
 
-    gcc
-    # nodejs_24
-    # pnpm_9
-    # svelte-language-server
-    # llvmPackages_20.clang-unwrapped
-    # python315
-    # rustc
-    # javaPackages.compiler.temurin-bin.jre-17
-    #eclipses.eclipse-java
-    # zlib
-    uv
-    
-    # sqlite
+    # editors
+    neovim
+    yazi
+		tree-sitter
 
+
+    gcc
+    uv
+  
 		# lsps
     tinymist
     nixd
-
+    lua-language-server
+    
     typst
     pandoc
 
   ];
 
+  # booooooo
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [

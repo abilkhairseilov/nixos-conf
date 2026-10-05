@@ -8,13 +8,13 @@
 
 	qt = {
 		enable = true;
-		platformTheme.name = "qtct";
+		# platformTheme.name = "qtct";
 		style = {
-			name = "kvantum";
-			package = [
-				pkgs.libsForQt5.qtstyleplugin-kvantum
-				pkgs.qt6Packages.qtstyleplugin-kvantum
-			];
+			name = "breeze";
+			# package = [
+			# 	pkgs.libsForQt5.qtstyleplugin-kvantum
+			# 	pkgs.qt6Packages.qtstyleplugin-kvantum
+			# ];
 		};
 		kvantum = {
 			enable = true;

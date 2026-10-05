@@ -20,8 +20,8 @@
       ### illogical-impulse-audio
       libcava #cava
       lxqt.pavucontrol-qt #pavucontrol-qt
-      wireplumber #wireplumber
-      pipewire #pipewire-pulse
+      # wireplumber #wireplumber
+      # pipewire #pipewire-pulse
       libdbusmenu-gtk3 #libdbusmenu-gtk3
       playerctl #playerctl
 
@@ -74,7 +74,7 @@
       hyprsunset #hyprsunset
       wl-clipboard #wl-clipboard
 
-			thunar
+      kdePackages.dolphin
 
       ### illogical-impulse-kde
       # kdePackages.bluedevil #bluedevil
@@ -91,10 +91,10 @@
 
 
       ### illogical-impulse-portal
-      #xdg-desktop-portal (Included elsewhere)
-      #xdg-desktop-portal-kde (Included elsewhere)
-      #xdg-desktop-portal-gtk (Included elsewhere)
-      #xdg-desktop-portal-hyprland (Included elsewhere)
+      # xdg-desktop-portal ## (Included elsewhere)
+      # xdg-desktop-portal-kde ## (Included elsewhere)
+      # xdg-desktop-portal-gtk ## (Included elsewhere)
+      # xdg-desktop-portal-hyprland ## (Included elsewhere)
 
       ### illogical-impulse-screencapture
       hyprshot #hyprshot
@@ -126,4 +126,5 @@
       libqalculate #libqalculate
 
     ];
+
 }

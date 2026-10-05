@@ -16,6 +16,7 @@
           "$HOME/.config/nvim"
           "$HOME/.config/helix"
           "$HOME/.config/hypr"
+          "$HOME/.config/quickshell"
           "$HOME/nixos"
           "$HOME/notes/md"
           "$HOME/notes/typst"
