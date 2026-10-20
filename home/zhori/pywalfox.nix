@@ -15,5 +15,7 @@
 	}
 	'';
 
+	home.packages = [pkgs.pywalfox-native];
+
 }
 

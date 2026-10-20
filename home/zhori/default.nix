@@ -8,25 +8,21 @@
 
 	imports = [
 		./shell.nix
-    ./tmux.nix
 		./kitty.nix
-		./qt.nix
     ./gtk.nix
     ./service.nix
 		./git.nix
 		./pywalfox.nix
+    ./tmux.nix
 		./tmux-session-dispensary.nix
 		./games.nix
 		./hypr.nix
 		./quickshell.nix
 	];
 
-	programs.zsh.enable = true;
-
 	home.packages = with pkgs; [
 
     firefox
-		pywalfox-native
     vesktop
 
     helix # helix is the new cool kid in the town
@@ -62,40 +58,43 @@
     syncthing
     keepassxc
 
+		mpv
     mpv-handler
 
     kdePackages.ark
 	];
-	xdg.mimeApps = {
-	  enable = true;
+	xdg = {
+		mimeApps = {
+			enable = true;
 
-	  defaultApplications = {
-	  	#pdfs
-	    "application/pdf" = [ "sioyek.desktop" ];
+			defaultApplications = {
+				#pdfs
+				"application/pdf" = [ "sioyek.desktop" ];
 
-	    # images
-	    "image/png" = [ "org.nomacs.ImageLounge.desktop" ];
-	    "image/jpeg" = [ "org.nomacs.ImageLounge.desktop" ];
-	    "image/gif" = [ "org.nomacs.ImageLounge.desktop" ];
-	    "image/webp" = [ "org.nomacs.ImageLounge.desktop" ];
-	    "image/bmp" = [ "org.nomacs.ImageLounge.desktop" ];
-	    "image/tiff" = [ "org.nomacs.ImageLounge.desktop" ];
-	    "image/svg+xml" = [ "org.nomacs.ImageLounge.desktop" ];
+				# images
+				"image/png" = [ "org.nomacs.ImageLounge.desktop" ];
+				"image/jpeg" = [ "org.nomacs.ImageLounge.desktop" ];
+				"image/gif" = [ "org.nomacs.ImageLounge.desktop" ];
+				"image/webp" = [ "org.nomacs.ImageLounge.desktop" ];
+				"image/bmp" = [ "org.nomacs.ImageLounge.desktop" ];
+				"image/tiff" = [ "org.nomacs.ImageLounge.desktop" ];
+				"image/svg+xml" = [ "org.nomacs.ImageLounge.desktop" ];
 
-			"inode/directory" = ["org.kde.dolphin.desktop"];
-	  };
+				"inode/directory" = ["org.kde.dolphin.desktop"];
+			};
 
-	  # just in case
-	  associations.added = {
-	    "application/pdf" = [ "sioyek.desktop" ];
+			# just in case
+			associations.added = {
+				"application/pdf" = [ "sioyek.desktop" ];
 
-	    "image/png" = [ "org.nomacs.ImageLounge.desktop" ];
-	    "image/jpeg" = [ "org.nomacs.ImageLounge.desktop" ];
-	    "image/gif" = [ "org.nomacs.ImageLounge.desktop" ];
-	    "image/webp" = [ "org.nomacs.ImageLounge.desktop" ];
-	    "image/bmp" = [ "org.nomacs.ImageLounge.desktop" ];
-	    "image/tiff" = [ "org.nomacs.ImageLounge.desktop" ];
-	    "image/svg+xml" = [ "org.nomacs.ImageLounge.desktop" ];
-	  };
+				"image/png" = [ "org.nomacs.ImageLounge.desktop" ];
+				"image/jpeg" = [ "org.nomacs.ImageLounge.desktop" ];
+				"image/gif" = [ "org.nomacs.ImageLounge.desktop" ];
+				"image/webp" = [ "org.nomacs.ImageLounge.desktop" ];
+				"image/bmp" = [ "org.nomacs.ImageLounge.desktop" ];
+				"image/tiff" = [ "org.nomacs.ImageLounge.desktop" ];
+				"image/svg+xml" = [ "org.nomacs.ImageLounge.desktop" ];
+			};
+		};
 	};
 }

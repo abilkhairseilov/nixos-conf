@@ -1,13 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  # home.pointerCursor = {
-  #   gtk.enable = true;
-  #   x11.enable = true;
-  #   package = pkgs.graphite-cursors;
-  #   name = "graphite-dark-nord";
-  #   size = 24;
-  # };
+	home.sessionVariables.GTK_THEME = "adw-gtk3-dark";
 
   gtk = {
 		enable = true;
@@ -25,7 +19,12 @@
       package = pkgs.papirus-icon-theme;
     };
     gtk4 = {
-      theme = config.gtk.theme;
+      theme = null;
     };
+	};
+	qt = {
+		enable = true;
+		platformTheme.name = "kde";
+		style.name = "breeze";
 	};
 }

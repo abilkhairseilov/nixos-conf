@@ -1,76 +1,46 @@
 { pkgs, ... }:
 
 {
+	programs.starship.enable = true;
 
-	programs.zsh = {
+	programs.fish = {
 		enable = true;
-		enableCompletion = true;
-
-		autosuggestion.enable = true;
-		syntaxHighlighting.enable = true;
-
-		history = {
-			size = 5000;
-			save = 5000;
-			path = "$HOME/.zsh_history";
-			ignoreDups = true;
-			ignoreSpace = true;
-			share = true;
-		};
-
+		interactiveShellInit = ''
+			set fish_greeting
+			if test "$TERM" != "linux"
+					alias ls 'eza --icons=auto -a'
+			end
+			if test "$TERM" = "xterm-kitty"
+					alias ssh 'kitten ssh'
+			end
+		'';
 		shellAliases = {
 			ls = "ls --color -lah";
 			vi = "nvim";
 			cls = "clear";
       ff = "fastfetch";
-      e = "emacsclient -n";
 		};
-
-		initContent = ''
-		  # powerlevel10k
-			source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-			[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-
-			# Keybindings
-			bindkey -e
-			bindkey '^q' history-search-backward
-			bindkey '^n' history-search-forward
-			bindkey '^[w' kill-region
-
-			# Completion styling
-			zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-			zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
-			zstyle ':completion:*' menu no
-			zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-			zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-			# Environment
-			# Ensure setuid wrappers (sudo, etc.) take precedence over /run/current-system/sw/bin.
-			# tmux panes inherit the server's PATH, which can place /run/wrappers/bin after
-			# /run/current-system/sw/bin and break sudo. Prepend so the real setuid sudo wins.
-			path=("/run/wrappers/bin" $path)
-			export PATH="$PATH:$HOME/.local/bin"
-			export EDITOR="nvim"
-
-			# fzf & zoxide
-			eval "$(${pkgs.fzf}/bin/fzf --zsh)"
-			eval "$(${pkgs.zoxide}/bin/zoxide init --cmd cd zsh)"
-		'';
-
 		plugins = [
 			{
-				name = "fzf-tab";
+				name = "z";
 				src = pkgs.fetchFromGitHub {
-					owner = "Aloxaf";
-					repo = "fzf-tab";
-					rev = "master";
-					sha256 = "sha256-1Ior+/9e+M+Fc1u0uq5HhknlGRS96q7tazhEE6rmx9Y=";
+					owner = "jethrokuan";
+					repo = "z";
+					rev = "e0e1b9dfdba362f8ab1ae8c1afc7ccf62b89f7eb";
+					sha256 = "0dbnir6jbwjpjalz14snzd3cgdysgcs3raznsijd6savad3qhijc";
 				};
 			}
 		];
 	};
 
-	programs.starship.enable = false;
+	programs.eza = {
+		enable = true;
+		enableBashIntegration = true;
+		enableZshIntegration = true;
+		enableFishIntegration = true;
+		git = true;
+		icons = "auto";
+	};
 
 }
 

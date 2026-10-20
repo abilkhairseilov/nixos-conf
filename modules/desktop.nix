@@ -28,6 +28,13 @@
     gvfs.enable = true;
     udisks2.enable = true;
 
+    printing.enable = true;
+    avahi = {
+      enable = true; # Helps discover the printer on the network
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+
   };
 
   environment.systemPackages = with pkgs; [
@@ -36,7 +43,6 @@
     neovim
     yazi
 		tree-sitter
-
 		
     kdePackages.kdeconnect-kde
 
@@ -55,15 +61,15 @@
     proton-vpn
   ];
 
-  # security.pam.service = {
-  #   gdm.enableGnomeKeyring = true;
-  # };
-
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
-    config.hyprland.default = ["hyprland" "gtk" ];
+		config = {
+			common = {
+				default = [ "gtk" "kde" ];
+			};
+		};
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.kdePackages.xdg-desktop-portal-kde ];
+    config.hyprland.default = [ "hyprland" "gtk" "kde" ];
   };
 
   programs = {

@@ -19,7 +19,6 @@ SSD           512 GB
     ../../modules/locale.nix
     ../../modules/desktop.nix
     ../../modules/development.nix
-    ../../modules/printing.nix
   ];
 
   networking.hostName = "bfg9k";
@@ -73,22 +72,34 @@ SSD           512 GB
     algorithm = "lz4";
   };
 
-  powerManagement.enable = true;
-
+  powerManagement = {
+		enable = true;
+		powertop.enable = true;
+	};
   services = {
-    auto-cpufreq = {
-      enable = true;
-      settings = {
-        battery = {
-          governor = "powersave";
-          turbo = "auto";
-        };
-        charger = {
-          governor = "performance";
-          turbo = "auto";
-        };
-      };
-    };
+    # auto-cpufreq = {
+    #   enable = true;
+    #   settings = {
+    #     battery = {
+    #       governor = "powersave";
+    #       turbo = "auto";
+    #     };
+    #     charger = {
+    #       governor = "performance";
+    #       turbo = "auto";
+    #     };
+    #   };
+    # };
+		tlp = {
+			enable = true;
+			settings = {
+				CPU_SCALING_GOVERNOR_ON_AC = "performance";
+				CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+				CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+				CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+			};
+		};
+
     earlyoom = {
       enable = true;
       freeMemThreshold = 5;

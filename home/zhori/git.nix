@@ -6,9 +6,6 @@
       enable = true;
 
       signing = {
-        # gpgPath = "gpg2";
-        # key = "YOUR_GPG_KEY_ID";
-        # signByDefault = true;
       };
 
       settings = {

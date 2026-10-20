@@ -5,7 +5,6 @@
 		prismlauncher
     apotris
 
-    rkpd2
     balatro
 
 		steam-tui

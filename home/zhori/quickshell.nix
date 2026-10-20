@@ -1,67 +1,62 @@
 { inputs, pkgs, lib, ... }:
 
-let
-  qs = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
-  qmlPackages = with pkgs; [
-    # Required by end-4 QML
-    kdePackages.kirigami.unwrapped
-
-    qt6.qt5compat
-    qt6.qtpositioning
-    qt6.qtquicktimeline
-    qt6.qtmultimedia
-    qt6.qtsensors
-    qt6.qtsvg
-  ];
-
-  qmlImportPath =
-    lib.makeSearchPath "lib/qt-6/qml" qmlPackages;
-
-  quickshellWrapped = pkgs.symlinkJoin {
-    name = "quickshell-end4";
-    meta.mainProgram = "qs";
-    paths = [ qs ];
-
-    nativeBuildInputs = [ pkgs.makeWrapper ];
-
-    postBuild = ''
-      for bin in quickshell qs; do
-        if [ -e "$out/bin/$bin" ]; then
-          wrapProgram "$out/bin/$bin" \
-            --prefix QML_IMPORT_PATH : "${qmlImportPath}" \
-            --prefix NIXPKGS_QT6_QML_IMPORT_PATH : "${qmlImportPath}" \
-            --prefix XDG_DATA_DIRS : "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
-        fi
-      done
-    '';
-  };
-in
 {
   programs.quickshell = {
     enable = true;
-    package = quickshellWrapped;
     systemd.enable = true;
   };
 
-  home.packages = with pkgs; [
-    # Frequently used by the actual shell
-    jq
-    curl
-    brightnessctl
-    playerctl
-    wl-clipboard
-    upower
+	home.packages = with pkgs; [
+      quickshell
+      matugen
+      kdePackages.kdialog
+			kdePackages.konsole
+      hyprpicker
+      mpvpaper
+      ffmpeg
+      python3
+      python3Packages.pillow
 
-    # Styling / generated theme
-    matugen
+      # Runtime tools called by ii modules and hyprland binds
+      grim            # screenshots (ScreenshotAction.qml, Recorder.qml)
+      slurp           # region selection (ScreenshotAction.qml)
+      swappy          # screenshot editor (TempScreenshotProcess.qml)
+      wf-recorder     # screen recording (Recorder.qml, record.sh)
+      cliphist        # clipboard history (Cliphist.qml, autostart.lua)
+      playerctl       # media keys (binds.lua, MprisController.qml)
+      tesseract       # OCR (ScreenshotAction.qml)
+      brightnessctl   # brightness keys (binds.lua, Brightness.qml)
+      ddcutil         # monitor brightness fallback (Brightness.qml)
 
-    # Used by several shell functions
-    imagemagick
-    libqalculate
+      # Fonts required by end4's config
+      material-symbols
+      nerd-fonts.jetbrains-mono
+      twemoji-color-font
 
-    # KDE-related helpers
-    kdePackages.kdialog
-    kdePackages.syntax-highlighting
-  ];
+      # GSettings for GTK apps (LibreWolf, etc.)
+      glib
+      gsettings-desktop-schemas
+
+      # For xdg-user-dir (needed by switchwall.sh's Choose file)
+      xdg-user-dirs
+
+      # Qt6 modules required by end4's config
+      qt6.qtbase
+      qt6.qtdeclarative
+      qt6.qtpositioning
+      qt6.qtlocation
+      qt6.qtquicktimeline
+      qt6.qtsensors
+      qt6.qtimageformats
+      qt6.qt5compat
+      qt6.qtmultimedia
+      qt6.qtsvg
+      qt6.qttools
+      qt6.qttranslations
+      qt6.qtvirtualkeyboard
+      kdePackages.qtwayland
+      kdePackages.kirigami.unwrapped
+      kdePackages.syntax-highlighting
+    ];
+
 }
