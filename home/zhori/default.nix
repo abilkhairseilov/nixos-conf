@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
 	home.username = "zhori";
@@ -18,6 +18,7 @@
 		./games.nix
 		./hypr.nix
 		./quickshell.nix
+		./chatgpt.nix
 	];
 
 	home.packages = with pkgs; [

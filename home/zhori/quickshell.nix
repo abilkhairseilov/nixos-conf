@@ -27,6 +27,7 @@
       tesseract       # OCR (ScreenshotAction.qml)
       brightnessctl   # brightness keys (binds.lua, Brightness.qml)
       ddcutil         # monitor brightness fallback (Brightness.qml)
+			nwg-displays		# monitor management
 
       # Fonts required by end4's config
       material-symbols

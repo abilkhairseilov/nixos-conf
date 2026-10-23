@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 
@@ -28,12 +28,12 @@
     gvfs.enable = true;
     udisks2.enable = true;
 
-    printing.enable = true;
-    avahi = {
-      enable = true; # Helps discover the printer on the network
-      nssmdns4 = true;
-      openFirewall = true;
-    };
+    # printing.enable = true;
+    # avahi = {
+    #   enable = true; # Helps discover the printer on the network
+    #   nssmdns4 = true;
+    #   openFirewall = true;
+    # };
 
   };
 
@@ -50,9 +50,6 @@
     pavucontrol
 
     dbus
-
-    tailscale
-    snapper
 
     ntfs3g
     usbutils
