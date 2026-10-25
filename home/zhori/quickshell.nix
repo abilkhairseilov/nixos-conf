@@ -58,6 +58,7 @@
       kdePackages.qtwayland
       kdePackages.kirigami.unwrapped
       kdePackages.syntax-highlighting
+			kdePackages.plasma-browser-integration
     ];
 
 }

@@ -19,6 +19,7 @@
 		./hypr.nix
 		./quickshell.nix
 		./chatgpt.nix
+		./emacs.nix
 	];
 
 	home.packages = with pkgs; [
