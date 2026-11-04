@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 /*
 Configuration for my HP Probook 440 G8 laptop
@@ -32,7 +32,7 @@ SSD           512 GB
   };
 
   boot.consoleLogLevel = 3;
-  boot.initrd.verbose = false;
+  # boot.initrd.verbose = false;
   
   systemd.services.disable-fingerprint-usb = {
     wantedBy = [ "multi-user.target" ];

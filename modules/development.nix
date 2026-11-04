@@ -1,26 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
-
-    git
-		# gh
-		curlFull
-		wget
-		ripgrep
-		fd
-		tree
-		jq
-		btop
-    zip
-    unzip
-
-    # editors
-    neovim
-    yazi
-		tree-sitter
-
-
     gcc
     uv
   
@@ -28,21 +9,26 @@
     tinymist
     nixd
     lua-language-server
-    
+
+    # docs    
     typst
     pandoc
 
   ];
 
-  # booooooo
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv.cc.cc.lib
-      zlib
-      openssl
-      libffi
-      glibc
-    ];
+  programs = {
+    git.enable = true;
+
+    # booooooo
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc.lib
+        zlib
+        openssl
+        libffi
+        glibc
+      ];
+    };
   };
 }

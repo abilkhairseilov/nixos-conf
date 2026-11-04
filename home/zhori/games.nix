@@ -5,10 +5,10 @@
 		prismlauncher
     apotris
 
-    balatro
+    # balatro
 
-		steam-tui
-		gamescope
+		# steam-tui
+		# gamescope
 
     uzdoom
     qzdl

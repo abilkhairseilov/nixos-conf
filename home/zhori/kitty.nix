@@ -6,7 +6,7 @@
 
     extraConfig = ''
       include ${config.home.homeDirectory}/.local/state/quickshell/user/generated/terminal/kitty-theme.conf
-      font_family                 BigBlueTerm437 Nerd Font Mono
+      font_family                 JetBrainsMono Nerd Font Mono
       font_size                   14
       initial_window_width        80c
       initial_window_height       24c
@@ -18,7 +18,7 @@
       background_opacity          0.7
       confirm_os_window_close     0
       cursor_trail 1
-    '';
+      '';
   };
 	# xdg.configFile."kitty/current_theme.conf".source = "${config.home.homeDirectory}/.local/state/quickshell/user/generated/terminal/kitty-theme.conf";
 }

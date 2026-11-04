@@ -5,7 +5,7 @@
 	];
 	programs.codexDesktopLinux = {
 		enable = true;
-			linuxFeatures = [ ];
+		linuxFeatures = [ ];
 	};
 }
 

@@ -1,20 +1,25 @@
 { config, lib, pkgs, ... }:
 
 {
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    auto-optimise-store = true;
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+  	nixpkgs.config.permittedInsecurePackages = [
+  		"firefox-esr-140-bin-unwrapped-140.17.0esr"
+  	];
 
-	nixpkgs.config.permittedInsecurePackages = [
-		"firefox-esr-140-bin-unwrapped-140.17.0esr"
-	];
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
+    allowUnfree = true;
   };
+
+
 }

@@ -12,31 +12,31 @@
     ./gtk.nix
     ./service.nix
 		./git.nix
-		./pywalfox.nix
+		# ./pywalfox.nix
     ./tmux.nix
 		./tmux-session-dispensary.nix
-		./games.nix
+		# ./games.nix
 		./hypr.nix
 		./quickshell.nix
-		./chatgpt.nix
-		./emacs.nix
+		# ./chatgpt.nix
+		# ./emacs.nix
 	];
 
 	home.packages = with pkgs; [
 
-    firefox
+		firefox
     vesktop
 
     helix # helix is the new cool kid in the town
     
 		obsidian
-		zotero
+		# zotero
 		sioyek
 
-		krita
-		upscayl
+		# krita
+		# upscayl
 		nomacs
-		vlc
+		# vlc
 
     kanshi
     blueman
@@ -47,10 +47,10 @@
     fastfetch
 		vicinae
 
-		codex
+		# codex
 		opencode
 
-    kdePackages.okular
+    # kdePackages.okular
     darktable
     cheese
 

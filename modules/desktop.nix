@@ -9,42 +9,12 @@
     };
 
     displayManager.ly.enable = true;
-
-    cloudflare-warp.enable = true;
-    tailscale = {
-      enable = true;
-    };
-
-    snapper = {
-      configs = {
-        home = {
-          SUBVOLUME = "/home";
-          TIMELINE_CREATE = true;
-          TIMELINE_CLEANUP = true;
-        };
-      };
-    };
-
-    gvfs.enable = true;
-    udisks2.enable = true;
-
-    # printing.enable = true;
-    # avahi = {
-    #   enable = true; # Helps discover the printer on the network
-    #   nssmdns4 = true;
-    #   openFirewall = true;
-    # };
-
   };
 
   environment.systemPackages = with pkgs; [
 
     # editors
-    neovim
-    yazi
 		tree-sitter
-		
-    kdePackages.kdeconnect-kde
 
     easyeffects
     pavucontrol
@@ -56,6 +26,16 @@
 
     wireguard-tools
     proton-vpn
+
+		curlFull
+		wget
+		ripgrep
+		fd
+		tree
+		jq
+		btop
+    zip
+    unzip
   ];
 
   xdg.portal = {
@@ -64,9 +44,10 @@
 			common = {
 				default = [ "gtk" "kde" ];
 			};
-		};
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.kdePackages.xdg-desktop-portal-kde ];
-    config.hyprland.default = [ "hyprland" "gtk" "kde" ];
+      hyprland = {
+        default = [ "hyprland" "gtk" "kde" ];
+      };
+    };
   };
 
   programs = {
@@ -78,10 +59,17 @@
       enable = true;
       binfmt = true;
     };
-		steam = {
-			enable = true;
-			remotePlay.openFirewall = true;
-		};
+    kdeconnect = {
+      enable = true;
+    };
+    vim = {
+      enable = true;
+      package = pkgs.vim-full;
+    };
+		# steam = {
+		# 	enable = true;
+		# 	remotePlay.openFirewall = true;
+		# };
   };
 
 }

@@ -9,6 +9,23 @@
   };
 
   services = {
+    cloudflare-warp.enable = true;
+    tailscale = {
+      enable = true;
+    };
+
+    snapper = {
+      configs = {
+        home = {
+          SUBVOLUME = "/home";
+          TIMELINE_CREATE = true;
+          TIMELINE_CLEANUP = true;
+        };
+      };
+    };
+
+    gvfs.enable = true;
+    udisks2.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
