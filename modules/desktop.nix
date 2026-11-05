@@ -40,12 +40,17 @@
 
   xdg.portal = {
     enable = true;
-		config = {
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
+      # kdePackages.xdg-desktop-portal-kde
+    ];
+    config = {
 			common = {
-				default = [ "gtk" "kde" ];
+				default = [ "gtk" ];
 			};
       hyprland = {
-        default = [ "hyprland" "gtk" "kde" ];
+        default = [ "hyprland" "gtk" ];
       };
     };
   };
@@ -54,6 +59,7 @@
 		hyprland = {
 			enable = true;
 			xwayland.enable = true;
+			portalPackage = pkgs.xdg-desktop-portal-hyprland;
 		};
     appimage = {
       enable = true;

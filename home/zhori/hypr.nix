@@ -45,27 +45,23 @@
       rsync #rsync
       yq-go #go-yq
 
-
       ### illogical-impulse-bibata-modern-classic-bin
       bibata-cursors
-
 
       ### illogical-impulse-fonts-themes
       adw-gtk3 #adw-gtk-theme-git
       kdePackages.breeze kdePackages.breeze-icons #breeze
       #breeze-plus (TODO: Not available as nixpkg)
-      # darkly darkly-qt5 #darkly-bin
+      darkly #darkly-qt5 #darkly-bin
       eza #eza
-      #fish (Currently install via system PM; TODO: should install via nix in future when authentication problem fixed)
       fontconfig #fontconfig
       kitty #kitty (Used in fuzzel, Hyprland, kdeglobals and Quickshell config; kitty config is also included as dots)
       matugen #matugen-bin (Used in Quickshell)
-      #otf-space-grotesk (TODO: Not available as Nixpkg)
-      # starship #starship
+      google-fonts #otf-space-grotesk (TODO: Not available as Nixpkg)
       nerd-fonts.jetbrains-mono #ttf-jetbrains-mono-nerd
       material-symbols #ttf-material-symbols-variable-git
-      #ttf-readex-pro (TODO: seems not available as nixpkg)
-      rubik #ttf-rubik-vf
+    	readexpro #ttf-readex-pro (TODO: seems not available as nixpkg)
+      # rubik #ttf-rubik-vf, covered by google-fonts
       twemoji-color-font #ttf-twemoji
 
 
@@ -74,21 +70,18 @@
       hyprsunset #hyprsunset
       wl-clipboard #wl-clipboard
 
-      kdePackages.dolphin
 
       ### illogical-impulse-kde
-      # kdePackages.bluedevil #bluedevil
       #gnome-keyring #gnome-keyring (TODO: Install via system PM instead; should install via nix in future when authentication problem fixed)
-      # networkmanager #networkmanager
-      # kdePackages.plasma-nm #plasma-nm
       # #polkit-kde-agent (TODO: Install via system PM instead; should install via nix in future when authentication problem fixed)
-      # # kdePackages.dolphin #dolphin
       # kdePackages.systemsettings #systemsettings
-
+      # 
+      kdePackages.dolphin #dolphin
+      kdePackages.plasma-nm #plasma-nm
+      kdePackages.bluedevil #bluedevil
       
       ### illogical-impulse-microtex-git
       # TODO: Not available as nixpkg
-
 
       ### illogical-impulse-portal
       # xdg-desktop-portal ## (Included elsewhere)
@@ -126,5 +119,23 @@
       libqalculate #libqalculate
 
     ];
+
+    systemd.user.services.polkit-gnome-authentication-agent-1 = {
+		  Unit = {
+		    Description = "polkit-gnome-authentication-agent-1";
+		    Wants = [ "graphical-session.target" ];
+		    After = [ "graphical-session.target" ];
+		  };
+		  Install = {
+		    WantedBy = [ "graphical-session.target" ];
+		  };
+		  Service = {
+		    Type = "simple";
+		    ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+		    Restart = "on-failure";
+		    RestartSec = 1;
+		    TimeoutStopSec = 10;
+		  };
+		};
 
 }

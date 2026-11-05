@@ -13,6 +13,7 @@
 
       font-awesome
 			material-symbols
+			google-fonts
 
       aporetic
 
