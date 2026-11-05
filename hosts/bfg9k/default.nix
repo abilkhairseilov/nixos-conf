@@ -1,12 +1,12 @@
 { pkgs, ... }:
 
 /*
-Configuration for my HP Probook 440 G8 laptop
-Specs:
-CPU           11th Gen i7-1165G7
-GPU           Intel Xeon (integrated graphics)
-RAM           8 GB (7.44 GiB)
-SSD           512 GB
+  Configuration for my HP Probook 440 G8 laptop
+  Specs:
+  CPU           11th Gen i7-1165G7
+  GPU           Intel Xeon (integrated graphics)
+  RAM           8 GB (7.44 GiB)
+  SSD           512 GB
 */
 
 {
@@ -33,7 +33,7 @@ SSD           512 GB
 
   boot.consoleLogLevel = 3;
   # boot.initrd.verbose = false;
-  
+
   systemd.services.disable-fingerprint-usb = {
     wantedBy = [ "multi-user.target" ];
 
@@ -60,10 +60,12 @@ SSD           512 GB
   };
 
   # ram is quite tight, 8 gb wont cut it
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 12 * 1024;
-  }];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 12 * 1024;
+    }
+  ];
 
   zramSwap = {
     enable = true;
@@ -73,9 +75,9 @@ SSD           512 GB
   };
 
   powerManagement = {
-		enable = true;
-		powertop.enable = true;
-	};
+    enable = true;
+    powertop.enable = true;
+  };
   services = {
     # auto-cpufreq = {
     #   enable = true;
@@ -90,15 +92,15 @@ SSD           512 GB
     #     };
     #   };
     # };
-		tlp = {
-			enable = true;
-			settings = {
-				CPU_SCALING_GOVERNOR_ON_AC = "performance";
-				CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-				CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-				CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-			};
-		};
+    tlp = {
+      enable = true;
+      settings = {
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      };
+    };
 
     earlyoom = {
       enable = true;
@@ -112,7 +114,13 @@ SSD           512 GB
     '';
   };
 
-  boot.kernelParams = [ "resume_offset=16818176" "mem_sleep_default=s2idle" "quiet" "rd.udev.log_level=3" "rd.systemd.show_status=auto"];
+  boot.kernelParams = [
+    "resume_offset=16818176"
+    "mem_sleep_default=s2idle"
+    "quiet"
+    "rd.udev.log_level=3"
+    "rd.systemd.show_status=auto"
+  ];
   boot.resumeDevice = "/dev/disk/by-uuid/9847502b-880d-40d9-af61-402f40f2c744";
 
   system.stateVersion = "25.11";

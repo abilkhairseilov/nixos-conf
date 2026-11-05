@@ -14,7 +14,7 @@
   environment.systemPackages = with pkgs; [
 
     # editors
-		tree-sitter
+    tree-sitter
 
     easyeffects
     pavucontrol
@@ -27,13 +27,13 @@
     wireguard-tools
     proton-vpn
 
-		curlFull
-		wget
-		ripgrep
-		fd
-		tree
-		jq
-		btop
+    curlFull
+    wget
+    ripgrep
+    fd
+    tree
+    jq
+    btop
     zip
     unzip
   ];
@@ -46,21 +46,24 @@
       # kdePackages.xdg-desktop-portal-kde
     ];
     config = {
-			common = {
-				default = [ "gtk" ];
-			};
+      common = {
+        default = [ "gtk" ];
+      };
       hyprland = {
-        default = [ "hyprland" "gtk" ];
+        default = [
+          "hyprland"
+          "gtk"
+        ];
       };
     };
   };
 
   programs = {
-		hyprland = {
-			enable = true;
-			xwayland.enable = true;
-			portalPackage = pkgs.xdg-desktop-portal-hyprland;
-		};
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+      portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    };
     appimage = {
       enable = true;
       binfmt = true;
@@ -72,10 +75,10 @@
       enable = true;
       package = pkgs.vim-full;
     };
-		# steam = {
-		# 	enable = true;
-		# 	remotePlay.openFirewall = true;
-		# };
+    # steam = {
+    # 	enable = true;
+    # 	remotePlay.openFirewall = true;
+    # };
   };
 
 }

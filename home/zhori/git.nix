@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs = {
@@ -10,49 +15,49 @@
 
       settings = {
         user = {
-          name  = "Abilkhair Seilov";
+          name = "Abilkhair Seilov";
           email = "abilkhairseilov@outlook.com";
         };
 
         init.defaultBranch = "main";
 
         core = {
-          editor     = "nvim";
-          autocrlf   = "input";            # LF on commit, no conversion on checkout
+          editor = "nvim";
+          autocrlf = "input"; # LF on commit, no conversion on checkout
           whitespace = "trailing-space,space-before-tab";
         };
 
-        pull.rebase  = true;               # rebase instead of merge on pull
-        push.autoSetupRemote = true;       # auto-track remote branch on first push
-        fetch.prune  = true;               # delete stale remote-tracking branches
+        pull.rebase = true; # rebase instead of merge on pull
+        push.autoSetupRemote = true; # auto-track remote branch on first push
+        fetch.prune = true; # delete stale remote-tracking branches
 
         rebase = {
-          autoStash   = true;              # stash dirty tree before rebase
-          autoSquash  = true;              # respect fixup!/squash! commits
+          autoStash = true; # stash dirty tree before rebase
+          autoSquash = true; # respect fixup!/squash! commits
         };
 
-        merge.conflictStyle = "zdiff3";    # shows base + both sides in conflicts
+        merge.conflictStyle = "zdiff3"; # shows base + both sides in conflicts
 
         diff = {
-          algorithm   = "histogram";       # better diff output than myers
-          colorMoved  = "default";         # highlight moved blocks differently
+          algorithm = "histogram"; # better diff output than myers
+          colorMoved = "default"; # highlight moved blocks differently
         };
 
         status.showUntrackedFiles = "all"; # show files inside untracked dirs
 
-        help.autocorrect = 10;             # auto-fix mistyped commands (1s delay)
+        help.autocorrect = 10; # auto-fix mistyped commands (1s delay)
 
         rerere = {
-          enabled    = true;               # remember conflict resolutions
+          enabled = true; # remember conflict resolutions
           autoUpdate = true;
         };
 
         url."git@github.com:".insteadOf = "https://github.com/";
 
         aliases = {
-          lg   = "log --oneline --graph --decorate --all";
+          lg = "log --oneline --graph --decorate --all";
           undo = "reset HEAD~1 --mixed";
-          wip  = "commit -am 'wip'";
+          wip = "commit -am 'wip'";
           unwip = "reset HEAD~1 --mixed";
         };
       };
@@ -66,15 +71,14 @@
     };
 
     delta = {
-      enable  = true;
+      enable = true;
       options = {
-        navigate    = true;
+        navigate = true;
         side-by-side = true;
         line-numbers = true;
         syntax-theme = "Nord";
       };
     };
   };
-
 
 }

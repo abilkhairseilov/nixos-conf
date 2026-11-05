@@ -16,5 +16,8 @@
       }
     '';
   };
-  home.packages = [ pkgs.rmpc pkgs.mpdris2 ];
+  home.packages = [
+    pkgs.rmpc
+    pkgs.mpdris2
+  ];
 }

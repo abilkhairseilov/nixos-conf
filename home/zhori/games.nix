@@ -1,18 +1,18 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 {
-  home.packages = with pkgs;[
-    
-		prismlauncher
+  home.packages = with pkgs; [
+
+    prismlauncher
     apotris
 
     # balatro
 
-		# steam-tui
-		# gamescope
+    # steam-tui
+    # gamescope
 
     uzdoom
     qzdl
-    
+
   ];
-  
+
 }

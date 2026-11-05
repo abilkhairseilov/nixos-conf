@@ -1,11 +1,19 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
 
   networking = {
-   networkmanager.enable = true;
-   firewall.checkReversePath = false;
-   nameservers = [ "1.1.1.1" "8.8.8.8" ];
+    networkmanager.enable = true;
+    firewall.checkReversePath = false;
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
   };
 
   services = {
@@ -32,7 +40,7 @@
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
-			wireplumber.enable = true;
+      wireplumber.enable = true;
     };
 
     gnome.gnome-keyring.enable = true;

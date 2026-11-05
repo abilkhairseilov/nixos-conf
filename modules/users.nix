@@ -3,11 +3,15 @@
 {
   users.users.zhori = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "input" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "input"
+    ];
     shell = pkgs.fish;
   };
-	
-	programs.fish = {
+
+  programs.fish = {
     enable = true;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting

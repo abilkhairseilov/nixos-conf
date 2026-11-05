@@ -18,7 +18,7 @@
       background_opacity          0.7
       confirm_os_window_close     0
       cursor_trail 1
-      '';
+    '';
   };
-	# xdg.configFile."kitty/current_theme.conf".source = "${config.home.homeDirectory}/.local/state/quickshell/user/generated/terminal/kitty-theme.conf";
+  # xdg.configFile."kitty/current_theme.conf".source = "${config.home.homeDirectory}/.local/state/quickshell/user/generated/terminal/kitty-theme.conf";
 }

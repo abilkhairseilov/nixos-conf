@@ -12,8 +12,8 @@
       nerd-fonts.bigblue-terminal
 
       font-awesome
-			material-symbols
-			google-fonts
+      material-symbols
+      google-fonts
 
       aporetic
 

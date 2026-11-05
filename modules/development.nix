@@ -4,13 +4,13 @@
   environment.systemPackages = with pkgs; [
     gcc
     uv
-  
-		# lsps
+
     tinymist
     nixd
+    nixfmt
     lua-language-server
 
-    # docs    
+    # docs
     typst
     pandoc
 

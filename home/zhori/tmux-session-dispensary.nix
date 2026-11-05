@@ -4,8 +4,15 @@
   home.packages = [
     (pkgs.writeShellApplication {
       name = "tmux-session-dispensary";
-      bashOptions = [];
-      runtimeInputs = with pkgs; [ fzf tmux yazi gawk findutils gnused ];
+      bashOptions = [ ];
+      runtimeInputs = with pkgs; [
+        fzf
+        tmux
+        yazi
+        gawk
+        findutils
+        gnused
+      ];
       text = ''
         BLUE='\033[1;34m'
         YELLOW='\033[1;33m'
