@@ -24,10 +24,15 @@
       enable = true;
       libraries = with pkgs; [
         stdenv.cc.cc.lib
+        libjpeg
+        wayland-scanner
+        python314Packages.pillow
+        pkg-config
         zlib
         openssl
         libffi
         glibc
+
       ];
     };
   };

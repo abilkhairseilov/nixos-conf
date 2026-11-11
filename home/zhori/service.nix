@@ -11,7 +11,7 @@
     syncthing = {
       enable = true;
     };
-    gnome-keyring.enable = lib.mkForce false;
+    # gnome-keyring.enable = lib.mkForce false;
 
   };
   systemd.user.services.polkit-gnome-authentication-agent-1 = {

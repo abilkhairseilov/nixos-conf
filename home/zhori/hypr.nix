@@ -1,11 +1,13 @@
 {
-  config,
-  libs,
   pkgs,
+  inputs,
   ...
 }:
 
 {
+  imports = [
+    inputs.illogical-flake.homeManagerModules.default
+  ];
   home.packages = with pkgs; [
     ## Basic cli tool
     ## inetutils: provides hostname, ifconfig, ping, etc.
@@ -30,7 +32,7 @@
     playerctl # playerctl
 
     ### illogical-impulse-backlight
-    (geoclue2.override { withDemoAgent = true; }) # geoclue
+    # (geoclue2.override { withDemoAgent = true; }) # geoclue
     brightnessctl # brightnessctl
     ddcutil # ddcutil
 
@@ -136,5 +138,7 @@
       TimeoutStopSec = 10;
     };
   };
+
+  programs.illogical-impulse.enable = true;
 
 }

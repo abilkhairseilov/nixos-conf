@@ -29,7 +29,7 @@
   };
   qt = {
     enable = true;
-    platformTheme.name = "kde";
-    style.name = "breeze";
+    # platformTheme.name = "qt6ct";
+    # style.name = "breeze";
   };
 }

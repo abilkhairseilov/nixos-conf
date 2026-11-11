@@ -9,10 +9,12 @@
     };
 
     displayManager.ly.enable = true;
+    geoclue2.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
 
+    polkit_gnome
     # editors
     tree-sitter
 
@@ -74,6 +76,9 @@
     vim = {
       enable = true;
       package = pkgs.vim-full;
+    };
+    neovim = {
+      enable = true;
     };
     # steam = {
     # 	enable = true;

@@ -29,6 +29,8 @@
 
     helix # helix is the new cool kid in the town
 
+    foot
+
     obsidian
     # zotero
     sioyek

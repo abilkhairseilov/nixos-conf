@@ -7,12 +7,16 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # quickshell = {
+    #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     codex-desktop-linux = {
       url = "github:ilysenko/codex-desktop-linux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    illogical-flake = {
+      url = "github:abilkhairseilov/illogical-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -22,8 +26,9 @@
       self,
       nixpkgs,
       home-manager,
-      quickshell,
+      # quickshell,
       codex-desktop-linux,
+      illogical-flake,
       ...
     }@inputs:
     let
@@ -57,6 +62,10 @@
                 "ui-tweaks"
               ];
             };
+          }
+          illogical-flake.homeManagerModules.default
+          {
+            programs.illogical-impulse.enable = true;
           }
         ];
       };
