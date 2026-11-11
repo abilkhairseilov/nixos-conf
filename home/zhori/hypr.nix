@@ -5,9 +5,9 @@
 }:
 
 {
-  imports = [
-    inputs.illogical-flake.homeManagerModules.default
-  ];
+  # imports = [
+  #   inputs.illogical-flake.homeManagerModules.default
+  # ];
   home.packages = with pkgs; [
     ## Basic cli tool
     ## inetutils: provides hostname, ifconfig, ping, etc.
@@ -53,7 +53,7 @@
     bibata-cursors
 
     ### illogical-impulse-fonts-themes
-    adw-gtk3 # adw-gtk-theme-git
+    # adw-gtk3 # adw-gtk-theme-git
     kdePackages.breeze
     kdePackages.breeze-icons # breeze
     #breeze-plus (TODO: Not available as nixpkg)
@@ -62,12 +62,18 @@
     fontconfig # fontconfig
     kitty # kitty (Used in fuzzel, Hyprland, kdeglobals and Quickshell config; kitty config is also included as dots)
     matugen # matugen-bin (Used in Quickshell)
-    google-fonts # otf-space-grotesk (TODO: Not available as Nixpkg)
-    nerd-fonts.jetbrains-mono # ttf-jetbrains-mono-nerd
-    material-symbols # ttf-material-symbols-variable-git
-    readexpro # ttf-readex-pro (TODO: seems not available as nixpkg)
-    # rubik #ttf-rubik-vf, covered by google-fonts
-    twemoji-color-font # ttf-twemoji
+
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
+    material-symbols
+    rubik
+    twemoji-color-font
+    (google-fonts.override {fonts = ["ReadexPro" "SpaceGrotesk"];})
+    noto-fonts
+    dejavu_fonts
+    hack-font
+    liberation_ttf
+    freefont_ttf
 
     ### illogical-impulse-hyprland
     #hyprland
@@ -138,7 +144,5 @@
       TimeoutStopSec = 10;
     };
   };
-
-  programs.illogical-impulse.enable = true;
 
 }

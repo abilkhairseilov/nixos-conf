@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,14 +13,14 @@
     #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    codex-desktop-linux = {
-      url = "github:ilysenko/codex-desktop-linux";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    illogical-flake = {
-      url = "github:abilkhairseilov/illogical-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # codex-desktop-linux = {
+    #   url = "github:ilysenko/codex-desktop-linux";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # illogical-flake = {
+    #   url = "github:abilkhairseilov/illogical-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs =
@@ -26,9 +28,11 @@
       self,
       nixpkgs,
       home-manager,
+      flake-parts,
+      import-tree,
       # quickshell,
-      codex-desktop-linux,
-      illogical-flake,
+      # codex-desktop-linux,
+      # illogical-flake,
       ...
     }@inputs:
     let
@@ -50,24 +54,24 @@
           }
         ];
       };
-      homeConfigurations.zhori = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [
-          codex-desktop-linux.homeManagerModules.default
-          {
-            programs.codexDesktopLinux = {
-              enable = true;
-              linuxFeatures = [
-                "read-aloud"
-                "ui-tweaks"
-              ];
-            };
-          }
-          illogical-flake.homeManagerModules.default
-          {
-            programs.illogical-impulse.enable = true;
-          }
-        ];
-      };
+      # homeConfigurations.zhori = home-manager.lib.homeManagerConfiguration {
+      #   pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      #   modules = [
+      #     # codex-desktop-linux.homeManagerModules.default
+      #     # {
+      #     #   programs.codexDesktopLinux = {
+      #     #     enable = true;
+      #     #     linuxFeatures = [
+      #     #       "read-aloud"
+      #     #       "ui-tweaks"
+      #     #     ];
+      #     #   };
+      #     # }
+      #     # illogical-flake.homeManagerModules.default
+      #     # {
+      #     #   programs.illogical-impulse.enable = true;
+      #     # }
+      #   ];
+      # };
     };
 }

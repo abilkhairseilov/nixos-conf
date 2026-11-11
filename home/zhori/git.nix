@@ -10,19 +10,16 @@
     git = {
       enable = true;
 
-      signing = {
-      };
-
       settings = {
         user = {
           name = "Abilkhair Seilov";
           email = "abilkhairseilov@outlook.com";
         };
 
-        init.defaultBranch = "main";
+        init.defaultBranch = "master";
 
         core = {
-          editor = "nvim";
+          editor = "hx";
           autocrlf = "input"; # LF on commit, no conversion on checkout
           whitespace = "trailing-space,space-before-tab";
         };

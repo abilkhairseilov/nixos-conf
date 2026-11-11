@@ -43,23 +43,22 @@
     kanshi
     blueman
 
-    kitty
+    # kitty
     fzf
-    zoxide
-    fastfetch
-    vicinae
+    # zoxide
+    # fastfetch
+    # vicinae
 
     # codex
-    opencode
+    # opencode
 
     # kdePackages.okular
-    darktable
-    cheese
+    # darktable
+    # cheese
 
-    picard
-    anki-bin
+    # picard
+    # anki-bin
 
-    syncthing
     keepassxc
 
     mpv
