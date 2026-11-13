@@ -12,13 +12,13 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/core.nix
-    ../../modules/users.nix
-    ../../modules/nix.nix
-    ../../modules/fonts.nix
-    ../../modules/locale.nix
-    ../../modules/desktop.nix
-    ../../modules/development.nix
+    ../../stuff/core.nix
+    ../../stuff/users.nix
+    ../../stuff/nix.nix
+    ../../stuff/fonts.nix
+    ../../stuff/locale.nix
+    ../../stuff/desktop.nix
+    ../../stuff/development.nix
   ];
 
   networking.hostName = "bfg9k";
