@@ -56,6 +56,7 @@
     # adw-gtk3 # adw-gtk-theme-git
     kdePackages.breeze
     kdePackages.breeze-icons # breeze
+    kdePackages.plasma-workspace
     #breeze-plus (TODO: Not available as nixpkg)
     darkly # darkly-qt5 #darkly-bin
     eza # eza
@@ -127,22 +128,36 @@
 
   ];
 
-  systemd.user.services.polkit-gnome-authentication-agent-1 = {
-    Unit = {
-      Description = "polkit-gnome-authentication-agent-1";
-      Wants = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
-    };
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
-    };
-    Service = {
-      Type = "simple";
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-      Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
-    };
-  };
+  # systemd.user.services.polkit-gnome-authentication-agent-1 = {
+  #   Unit = {
+  #     Description = "polkit-gnome-authentication-agent-1";
+  #     Wants = [ "graphical-session.target" ];
+  #     After = [ "graphical-session.target" ];
+  #   };
+  #   Install = {
+  #     WantedBy = [ "graphical-session.target" ];
+  #   };
+  #   Service = {
+  #     Type = "simple";
+  #     ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+  #     Restart = "on-failure";
+  #     RestartSec = 1;
+  #     TimeoutStopSec = 10;
+  #   };
+  # };
 
-}
+  qt = {
+    enable = true;
+
+    platformTheme.name = "kde";
+
+    style = {
+      name = "kvantum";
+      package = pkgs.kdePackages.qtstyleplugin-kvantum;
+    };
+
+    kvantum = {
+      enable = true;
+      settings.General.theme = "MaterialAdw";
+    };
+  };}

@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ self, inputs, ... }:
 
 {
   flake.nixosConfigurations.bfg9k = inputs.nixpkgs.lib.nixosSystem {
@@ -9,10 +9,10 @@
     };
 
     modules = [
-      # Your EXISTING host configuration
       ../hosts/bfg9k
 
-      # Your EXISTING Home Manager integration
+      # self.homeManagerModules.shell
+
       inputs.home-manager.nixosModules.home-manager
 
       {

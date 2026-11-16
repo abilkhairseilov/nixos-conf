@@ -57,7 +57,7 @@
     # cheese
 
     # picard
-    # anki-bin
+    anki-bin
 
     keepassxc
 

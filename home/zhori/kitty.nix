@@ -7,7 +7,7 @@
     extraConfig = ''
       include ${config.home.homeDirectory}/.local/state/quickshell/user/generated/terminal/kitty-theme.conf
       font_family                 JetBrainsMono Nerd Font Mono
-      font_size                   14
+      font_size                   25
       initial_window_width        80c
       initial_window_height       24c
       scrollback_lines            2000

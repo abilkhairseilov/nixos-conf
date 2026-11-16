@@ -12,9 +12,14 @@
     geoclue2.enable = true;
   };
 
+  programs.dconf.enable = true;
+
+  environment.sessionVariables.XDG_DATA_DIRS = [
+    "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
+  ];
   environment.systemPackages = with pkgs; [
 
-    polkit_gnome
+    # polkit_gnome
     # editors
     tree-sitter
 
@@ -38,6 +43,9 @@
     btop
     zip
     unzip
+
+    glib
+    gsettings-desktop-schemas
   ];
 
   xdg.portal = {

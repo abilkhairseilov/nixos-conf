@@ -6,10 +6,11 @@
 {
   programs.quickshell = {
     enable = true;
-    systemd.enable = true;
+    # systemd.enable = true;
   };
 
   home.packages = with pkgs; [
+    kde-material-you-colors
     # matugen
     # kdePackages.kdialog
     # kdePackages.konsole
@@ -32,11 +33,11 @@
     # nwg-displays # monitor management
 
     # # GSettings for GTK apps (LibreWolf, etc.)
-    # glib
-    # gsettings-desktop-schemas
+    glib
+    gsettings-desktop-schemas
 
     # # For xdg-user-dir (needed by switchwall.sh's Choose file)
-    # xdg-user-dirs
+    xdg-user-dirs
 
     # Qt6 modules required by end4's config
     qt6.qtbase
@@ -56,6 +57,12 @@
     kdePackages.kirigami.unwrapped
     kdePackages.syntax-highlighting
     kdePackages.plasma-browser-integration
+    kdePackages.kdialog
   ];
 
+  # dconf = {
+  #   enable = true;
+  #   settings."org/gnome/desktop/interface".color-scheme =
+  #     "prefer-dark";
+  # };
 }

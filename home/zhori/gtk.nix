@@ -25,9 +25,9 @@
       theme = null;
     };
   };
-  qt = {
-    enable = true;
-    # platformTheme.name = "qt6ct";
-    # style.name = "breeze";
-  };
+  # qt = {
+  #   enable = true;
+  #   # platformTheme.name = "qt6ct";
+  #   # style.name = "breeze";
+  # };
 }
